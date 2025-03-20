@@ -1,6 +1,7 @@
 import express from "express";
 import categories from "./src/routes/categories.js";
 
+
 const app = express();
 
 
