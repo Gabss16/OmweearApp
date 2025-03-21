@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import employeesController from "../controllers/employeesController.js"
+import shoppingCartController from "../controllers/shoppingCartController.js"
 //Router que nos ayuda a color métodos
 // que tendrá mi ruta
  
@@ -9,10 +9,10 @@ const router = express.Router();
  
  
 router.route("/")
-.get(employeesController.getEmployees)
-.post(employeesController.createEmployees)
+.get(shoppingCartController.getCart)
+.post(shoppingCartController.createCart)
 router.route("/:id")
-.put(employeesController.updateEmployees)
-.delete(employeesController.deleteEmployees);
+.put(shoppingCartController.updateCart)
+.delete(shoppingCartController.deleteCart);
  
 export default router;
