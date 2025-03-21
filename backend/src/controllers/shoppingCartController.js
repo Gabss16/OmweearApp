@@ -6,7 +6,7 @@ import shopingCartModel from "../models/ShoppingCart.js"
  
 //SELECT
 shoppingCartController.getCart = async (req, res) => {
-const shoppingCart = await shopingCartModel.find().populate("userId").populate("idProducts")
+const shoppingCart = await shopingCartModel.find().populate("userId").populate("products")
 res.json(shoppingCart)
 }
  
