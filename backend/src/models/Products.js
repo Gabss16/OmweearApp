@@ -13,10 +13,10 @@ price: {
     type: Number,
     require: true
 },
-stock: [{
+stock: {
     type: Number,
     require: true
-}],
+},
 idCategory: {
     type: Schema.Types.ObjectId,
     ref: "Categories",
@@ -31,16 +31,15 @@ images: {
     type: string,
     require: false
 },
-sizesAvailable: [{
+sizesAvailable: {
     type: string,
     require: true
-}],
-idSupplier: [{
+},
+idSupplier: {
     type: Schema.Types.ObjectId,
     ref: "Suppliers",
     require: true
-}]
-
+}
 }, {
     timestamps: true,
     strict: false

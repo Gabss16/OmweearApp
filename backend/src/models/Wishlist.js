@@ -5,15 +5,15 @@ idUser: {
     type: string,
     require: true
 },
-idProduct: [{
+idProduct: {
     type: Schema.Types.ObjectId,
     ref: "Products",
     require: true
-}]
+}
 
 }, {
     timestamps: true,
     strict: false
 })
 
-export default model("Wishlist", wishListSchema)
+export default model("Wishlist", wishList)

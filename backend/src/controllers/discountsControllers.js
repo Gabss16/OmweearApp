@@ -2,7 +2,7 @@ const discountsControllers = {};
 import discountsModel from "../models/Discounts.js"
 
 discountsControllers.getDiscounts = async (req, res) => {
-    const discounts = await discountsModel.find()
+    const discounts = await discountsModel.find().populate("idProduct")
     res.json(discounts)
 }
 

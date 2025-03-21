@@ -5,11 +5,11 @@ discount: {
     type: Number,
     require: true
 },
-idProduct: [{
+idProduct: {
     type: Schema.Types.ObjectId,
     ref: "Products",
     require: true
-}]
+}
 
 }, {
     timestamps: true,

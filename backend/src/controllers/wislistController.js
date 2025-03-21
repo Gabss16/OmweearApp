@@ -2,7 +2,7 @@ const wishListControllers = {};
 import wishListModel from "../models/Wishlist.js"
 
 wishListControllers.getWishlist = async (req, res) => {
-    const wishlist = await wishListModel.find()
+    const wishlist = await wishListModel.find().populate("idProduct").populate("idUser")
     res.json(wishlist)
 }
 

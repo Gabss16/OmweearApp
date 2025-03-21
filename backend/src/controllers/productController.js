@@ -2,13 +2,13 @@ const productsControllers = {};
 import productsModel from "../models/Products.js"
 
 productsControllers.getProducts = async (req, res) => {
-    const products = await productsModel.find()
+    const products = await productsModel.find().populate("idCategory").populate("idBrand").populate("idSupplier")
     res.json(products)
 }
 
 productsControllers.postProducts = async (req, res) => {
-    const { idUser, idProduct } = req.body;
-    const newProducts = new productsModel({ idUser, idProduct })
+    const { name, description, price, stock, idCategory, idBrand, images, sizesAvailable, idSupplier } = req.body;
+    const newProducts = new productsModel({ name, description, price, stock, idCategory, idBrand, images, sizesAvailable, idSupplier })
     await newProducts.save()
     res.json({message: "Product Insert"})
 }
@@ -19,11 +19,18 @@ productsControllers.deleteProducts = async (req, res) => {
 }
 
 productsControllers.putProducts = async (req, res) => {
-    const { idUser, idProduct } = req.body;
+    const { name, description, price, stock, idCategory, idBrand, images, sizesAvailable, idSupplier } = req.body;
 
     await productsModel.findByIdAndUpdate(req.params.id, {
-        idUser,
-        idProduct
+        name, 
+        description, 
+        price, 
+        stock, 
+        idCategory, 
+        idBrand, 
+        images, 
+        sizesAvailable, 
+        idSupplier
     }, {new: true}
 );
 res.json({ message: "Product Updated"});
