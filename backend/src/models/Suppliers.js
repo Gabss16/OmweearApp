@@ -2,15 +2,15 @@ import { Schema, model} from "mongoose";
 
 const suppliersSchema = new Schema({
 name: {
-    type: string,
+    type: String,
     require: true
 },
 company: {
-    type: string,
+    type: String,
     require: true
 },
 email: {
-    type: string,
+    type: String,
     require: true
 },
 phone: {

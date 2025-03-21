@@ -2,7 +2,7 @@ import { Schema, model} from "mongoose";
 
 const wishListSchema = new Schema({
 idUser: {
-    type: string,
+    type: String,
     require: true
 },
 idProduct: [{
