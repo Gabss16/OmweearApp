@@ -31,13 +31,9 @@ images: {
     type: String,
     require: false
 },
-<<<<<<< HEAD
-sizesAvailable: {
-    type: string,
-=======
-sizesAvailable: [{
+
+sizesAvailable:{
     type: String,
->>>>>>> 44c06197719d4926782329638869539acb3769be
     require: true
 },
 idSupplier: {
