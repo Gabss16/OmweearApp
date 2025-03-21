@@ -7,11 +7,11 @@ import categoriesControllers from "../controllers/categoriesControllers.js";
 const router = express.Router();
 
 router.route("/")
-.get(categoriesControllers.getcategories)
-.post(categoriesControllers.createcategories)
+.get(categoriesControllers.getCategories)
+.post(categoriesControllers.createCategories)
 
 router.route("/:id")
-.put(categoriesControllers.updatecategories)
-.delete(categoriesControllers.deletecategories);
+.put(categoriesControllers.updateCategories)
+.delete(categoriesControllers.deleteCategories);
 
 export default router;

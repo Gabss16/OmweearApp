@@ -6,7 +6,7 @@ import categoriesModel from "../models/Categories.js"
 
 //SELECT
 categoriesController.getCategories = async (req, res) => {
-const categories = await categoriesModel.find()
+const categories = await categoriesModel.find().populate('idCategorie')
 res.json(categories)
 }
 
