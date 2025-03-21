@@ -5,34 +5,33 @@ import brandsModel from "../models/Brands.js"
 
 //SELECT
 brandsControllers.getbrands = async (req, res) => {
-    const brandss = await brandsModel.find().populate('idCliente')
-    res.json(brandss)
+    const brands = await brandsModel.find().populate('idBrand')
+    res.json(brands)
 }
 // INSERT
 brandsControllers.createbrands = async (req, res) => {
-    const{ name, description, idCliente } = req.body;
-    const newbrands = new brandsModel ({ comment, rating,idCliente});
+    const{ name, description } = req.body;
+    const newbrands = new brandsModel ({name, description});
     await newbrands.save()
-    res.json({ message : "brands saved"});
+    res.json({ message : "brand saved"});
 }
     //DELETE
-brandsControllers.deletebrandss = async (req, res) => {
+brandsControllers.deletebrands = async (req, res) => {
     await brandsModel.findOneAndDelete(req.params.id)
-    res.json({message:"brands deleted"})
+    res.json({message:"brand deleted"})
     }
     
     //UPDATE
-brandsControllers.updatebrandss = async (req, res) => {
+brandsControllers.updatebrands = async (req, res) => {
     //  Solicito todos los valores
-    const {comment, rating, idCliente} = req.body;
+    const {name, description} = req.body;
     
         await brandsModel.findByIdAndUpdate(req.params.id,{
-            comment,
-            rating,
-            idCliente
+            name, 
+            description
         },{new: true}
     );
     // muestro un mensaje que todo se actulizó
-    res.json({ message: "brands uptated"});
+    res.json({ message: "brand uptated"});
     };
     export default brandsControllers;
