@@ -8,8 +8,7 @@ name: {
 },
    email: { 
     type: String,
-    required: true, 
-    unique: true 
+    required: true
 },
    password: { 
     type: String, 
@@ -21,8 +20,7 @@ name: {
 },
    dui: { 
     type: String, 
-    required: true, 
-    unique: true 
+    required: true
 },
    isss: { 
     type: Number, 

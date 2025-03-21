@@ -12,8 +12,8 @@ res.json(employees)
  
 // INSERT
 employeesController.createEmployees = async (req, res) => {
-    const{name, email, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender} = req.body;
-    const newEmployee = new employeesModel ({name, email, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender});
+    const{name, email, phone, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender} = req.body;
+    const newEmployee = new employeesModel ({name, email, phone, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender});
     await newEmployee.save()
     res.json({ message : "employees saved"});
 }
@@ -31,11 +31,12 @@ employeesController.createEmployees = async (req, res) => {
 //UPDATE
 employeesController.updateEmployees = async (req, res) => {
    //  Solicito todos los valores
-    const {name, email, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender} = req.body;
+    const {name, email, phone, password, dui, isss, charge, profilePhoto, hireDate, birthday, gender} = req.body;
  
     await employeesModel.findByIdAndUpdate(req.params.id,{
         name, 
         email, 
+        phone,
         password, 
         dui, 
         isss, 
