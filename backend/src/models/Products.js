@@ -32,7 +32,7 @@ images: {
     require: false
 },
 
-sizesAvailable:{
+sizesAvailable: {
     type: String,
     require: true
 },
