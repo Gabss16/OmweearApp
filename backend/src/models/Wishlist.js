@@ -16,4 +16,4 @@ idProduct: [{
     strict: false
 })
 
-export default model("Wishlist", wishList)
+export default model("Wishlist", wishListSchema)

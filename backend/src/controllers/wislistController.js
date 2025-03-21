@@ -19,7 +19,7 @@ wishListControllers.deleteWishlist = async (req, res) => {
 }
 
 wishListControllers.putWishlist = async (req, res) => {
-    const { discount, idProduct } = req.body;
+    const { idUser, idProduct } = req.body;
 
     await wishListModel.findByIdAndUpdate(req.params.id, {
         idUser,

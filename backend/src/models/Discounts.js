@@ -16,4 +16,4 @@ idProduct: [{
     strict: false
 })
 
-export default model("Discounts", discounts)
+export default model("Discounts", discountsSchema)
