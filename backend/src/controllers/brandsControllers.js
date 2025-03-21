@@ -5,7 +5,7 @@ import brandsModel from "../models/Brands.js"
 
 //SELECT
 brandsControllers.getbrands = async (req, res) => {
-    const brands = await brandsModel.find().populate('idBrand')
+    const brands = await brandsModel.find()
     res.json(brands)
 }
 // INSERT

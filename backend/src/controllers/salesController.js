@@ -6,7 +6,7 @@ import salesModel from "../models/Sales.js"
  
 //SELECT
 salesController.getSales = async (req, res) => {
-const sale = await saleModel.find()
+const sale = await saleModel.find().populate("shoppingCart_id").populate("idPaymentMethod")
 res.json(sale)
 }
  
