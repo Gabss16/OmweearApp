@@ -1,0 +1,64 @@
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .left-section {
+    flex: 1;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .right-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .social-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .facebook {
+    background-color: #1877F2;
+    color: white;
+  }
+  
+  .google {
+    background-color: #DB4437;
+    color: white;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .forgot-password, a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
