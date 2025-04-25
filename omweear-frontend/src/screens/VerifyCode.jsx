@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./VerifyCode.css";
+import Pilimg from "../images/Pil.png";
 
 const VerifyCode = () => {
   return (
     <div className="verify-container">
-      <div className="left-section">
+      <div className="right-section">
         <h1>Omweear</h1>
         <p>Eleva tu práctica, Eleva tu estilo</p>
-        <div className="image-placeholder">{/* Aquí colocas la imagen de los accesorios */}</div>
+          <img src={Pilimg} alt="Pilates" className="imgpil" />
       </div>
-      <div className="right-section">
+      <div className="left-section">
         <h2>Verificar Código</h2>
         <p>Ingresa el código que te mandamos:</p>
         <input type="text" placeholder="XXXX" className="code-input" />
