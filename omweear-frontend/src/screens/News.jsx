@@ -1,37 +1,48 @@
-import React from 'react';
-import '../styles/News.css';
+import React from "react";
+import "../styles/News.css";
 
-const products = [
-  { id: 1, name: "Top Deportivo", price: "$29.99", img: "URL_IMG_1" },
-  { id: 2, name: "Leggings", price: "$39.99", img: "URL_IMG_2" },
-  { id: 3, name: "Chaqueta Yoga", price: "$49.99", img: "URL_IMG_3" },
-  // Agrega más productos
-];
-
-const News = () => {
+export default function News() {
   return (
     <div className="news-container">
-      {/* Banner */}
-      <div className="news-banner">
-        <img src="URL_BANNER" alt="Banner" className="banner-img" />
-        <h1 className="banner-text">New Arrivals</h1>
-      </div>
+      <aside className="sidebar">
+        <h3>Filtrar</h3>
+        <div className="filter-group">
+          <label>Tipo</label>
+          <select>
+            <option>Top</option>
+            <option>Shorts</option>
+            <option>Chaquetas</option>
+          </select>
+        </div>
+        <div className="filter-group">
+          <label>Talla</label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+        </div>
+      </aside>
 
-      {/* Grid de productos */}
-      <div className="product-grid">
-        {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <img src={product.img} alt={product.name} className="product-img" />
-            <div className="product-info">
-              <h2>{product.name}</h2>
-              <p>{product.price}</p>
-              <button className="product-btn">Añadir al carrito</button>
+      <main className="main-content">
+        <div className="banner">
+          <h1>New Arrivals</h1>
+        </div>
+
+        <div className="product-grid">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="product-card">
+              <img
+                src="https://via.placeholder.com/300x400"
+                alt="Producto"
+              />
+              <h4>Nombre Producto</h4>
+              <p>$25.00</p>
+              <button>Comprar</button>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
-};
-
-export default News;
+}
