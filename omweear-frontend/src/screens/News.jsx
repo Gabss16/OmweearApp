@@ -1,48 +1,46 @@
-import React from "react";
-import "../styles/News.css";
+import React from 'react';
+import '../styles/News.css'; 
 
-export default function News() {
+function News() {
+  const newArrivals = [
+    { id: 1, name: 'Active Top', image: '/images/wear.jpg', price: '$60.00' },
+    { id: 2, name: 'Basic Short', image: '/images/wear.jpg', price: '$45.00' },
+    { id: 3, name: 'Astra Vest', image: '/images/wear.jpg', price: '$72.00' },
+    { id: 4, name: 'Anna Cheer', image: '/images/wear.jpg', price: '$52.00' },
+    { id: 5, name: 'Basic Vest', image: '/images/wear.jpg', price: '$47.00' },
+    { id: 6, name: 'Astra Top', image: '/images/wear.jpg', price: '$97.00' },
+    { id: 7, name: 'Heather Cheer', image: '/images/wear.jpg', price: '$62.00' },
+    { id: 8, name: 'Amelia Cheer', image: '/images/wear.jpg', price: '$55.00' },
+    { id: 9, name: 'Aisha Cheer', image: '/images/wear.jpg', price: '$62.00' },
+    { id: 10, name: 'Astra Short', image: '/images/wear.jpg', price: '$67.00' },
+    { id: 11, name: 'Basic Cheer', image: '/images/wear.jpg', price: '$47.00' },
+    // ... más items
+  ];
+
   return (
-    <div className="news-container">
+    <div className="news-section">
       <aside className="sidebar">
-        <h3>Filtrar</h3>
-        <div className="filter-group">
-          <label>Tipo</label>
-          <select>
-            <option>Top</option>
-            <option>Shorts</option>
-            <option>Chaquetas</option>
-          </select>
-        </div>
-        <div className="filter-group">
-          <label>Talla</label>
-          <select>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-          </select>
-        </div>
+        <h3>Filtrar por:</h3>
+        <ul>
+          <li><a href="#">Tops</a></li>
+          <li><a href="#">Shorts</a></li>
+          <li><a href="#">Vests</a></li>
+          {/* ... más filtros */}
+        </ul>
       </aside>
-
-      <main className="main-content">
-        <div className="banner">
-          <h1>New Arrivals</h1>
-        </div>
-
-        <div className="product-grid">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <div key={index} className="product-card">
-              <img
-                src="https://via.placeholder.com/300x400"
-                alt="Producto"
-              />
-              <h4>Nombre Producto</h4>
-              <p>$25.00</p>
-              <button>Comprar</button>
-            </div>
-          ))}
-        </div>
-      </main>
+      <div className="arrivals-grid">
+        <h2 className="new-arrivals-title">New Arrivals</h2>
+        {newArrivals.map(item => (
+          <div key={item.id} className="arrival-item">
+            <img src={item.image} alt={item.name} className="item-image" />
+            <h3 className="item-name">{item.name}</h3>
+            <p className="item-price">{item.price}</p>
+            <button className="buy-now-button">Buy Now</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+export default News;

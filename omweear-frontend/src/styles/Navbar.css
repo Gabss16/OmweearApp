@@ -17,8 +17,13 @@
   align-items: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .logo {
-  color: #e91e63;
+  color: #040203;
   font-size: 24px;
   font-weight: bold;
 }
@@ -37,7 +42,7 @@
 }
 
 .nav-links a:hover {
-  color: #e91e63;
+  color: #000000;
 }
 
 .login-btn a {
@@ -50,5 +55,5 @@
 }
 
 .login-btn a:hover {
-  background-color: #c2185b;
+  background-color: #000000;
 }

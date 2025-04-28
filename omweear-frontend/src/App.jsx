@@ -5,7 +5,7 @@ import Login from './screens/Login.jsx'
 import Register from './screens/Register.jsx'
 import VerifyCode from './screens/VerifyCode.jsx'
 import ResetPassword from './screens/ResetPassword.jsx'
-import News from './screens/News.jsx';*/
+*/
 import Navbar from './components/Navbar.jsx'
 import News from './screens/News.jsx';
 import Home from './screens/Home.jsx';
