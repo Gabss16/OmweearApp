@@ -9,6 +9,7 @@ import VerifyCode from './screens/VerifyCode.jsx';
 import ResetPassword from './screens/ResetPassword.jsx';
 import Navbar from './components/Navbar.jsx'
 import Recoverpassword from './screens/Recoverpassword.jsx';
+import News from './screens/News.jsx'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/recover-password" element={<Recoverpassword />} />
         <Route path="/verify-code" element={<VerifyCode />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/news" element={<News />} />
       </Routes>
     </Router>
   )

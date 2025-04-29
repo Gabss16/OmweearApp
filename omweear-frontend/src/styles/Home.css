@@ -1,0 +1,19 @@
+.home-container {
+    background-image: url('../assets/background-home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-content {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 40px;
+    border-radius: 12px;
+  }
+  
