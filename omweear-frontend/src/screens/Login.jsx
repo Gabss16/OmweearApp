@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import Pilimg from "../images/Pil.png";
 import Fbbtn from "../images/fb.png";
@@ -23,13 +23,13 @@ const Login = () => {
           <button className="social-btn google"><img src={Glbtn} alt="Google" /></button>
         </div>
         <p>O usar tu correo electrónico y contraseña</p>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input type="email" placeholder="Correo electrónico" />
           <input type="password" placeholder="Contraseña" />
-          <a href="#" className="forgot-password">¿Has olvidado tu contraseña?</a>
+          <Link to="/recover-password" className="forgot-password">¿Has olvidado tu contraseña?</Link>
           <button type="submit" className="login-btn">Iniciar sesión</button>
         </form>
-        <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+        <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
       </div>
     </div>
   );
