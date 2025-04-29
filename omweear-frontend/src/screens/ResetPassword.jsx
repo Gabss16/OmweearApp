@@ -1,20 +1,34 @@
-import React, { useState } from "react";
-import "./ResetPassword.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './ResetPassword.css';
+import Imgpil from "../images/Pil.png"
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
+
+  const handleAccept = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
+
   return (
-    <div className="reset-container">
-      <div className="left-section">
-        <h1>Omweear</h1>
-        <p>Eleva tu práctica, Eleva tu estilo</p>
+    <div className="reset-password-container">
+      <div className="form-container">
+        <h1>Reestablecer Contraseña</h1>
+        <form onSubmit={handleAccept}>
+          <label htmlFor="new-password">Ingresa la nueva contraseña</label>
+          <input type="password" id="new-password" placeholder="Contraseña" />
+          <label htmlFor="confirm-password">Ingresa nuevamente tu nueva contraseña</label>
+          <input type="password" id="confirm-password" placeholder="Contraseña" />
+          <button type="submit">Aceptar</button>
+        </form>
       </div>
-      <div className="right-section">
-        <h2>Reestablecer Contraseña</h2>
-        <p>Ingresa la nueva contraseña</p>
-        <input type="password" placeholder="Contraseña" className="password-input" />
-        <p>Ingresa nuevamente tu nueva contraseña</p>
-        <input type="password" placeholder="Contraseña" className="password-input" />
-        <button className="accept-btn">Aceptar</button>
+      <div className="image-container">
+        <div className="brand-info">
+          <h2>Omweear</h2>
+          <p>Eleva tu práctica, Eleva tu estilo</p>
+        </div>
+        <img src={Imgpil} alt="" />
       </div>
     </div>
   );

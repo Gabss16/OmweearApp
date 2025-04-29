@@ -1,0 +1,101 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 800px;
+    font-family: "Raleway", sans-serif;
+  }
+  
+  .register-left {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .register-left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #000;
+  }
+  
+  .register-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-family: "Raleway", sans-serif;
+    color: #4E4E4E;
+    background-color: #D9D9D9;
+    font-weight: bold;
+    border: none;
+    outline: none;
+  }
+  
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .register-btn {
+    width: 70%;
+    padding: 15px;
+    background-color: #d9a7a7;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .login-link {
+    color: #5f5dc2;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .login-link a {
+    color: #5f5dc2;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    margin-top: 8px;
+  }
+  
+  .register-right {
+    flex: 1;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 40px;
+    height: 450px;
+    width: 100px;
+  }
+  
+  .register-right img {
+    width: 115%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .register-right h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+  
+  .register-right p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
