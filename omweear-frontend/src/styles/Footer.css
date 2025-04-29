@@ -1,0 +1,126 @@
+/*.main-footer {
+    background-color: #222;
+    color: #eee;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    margin-top: 40px;
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .footer-logo {
+      flex-basis: auto;
+      text-align: left;
+      margin-bottom: 0;
+    }
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .footer-links {
+      width: auto;
+    }
+  }
+  
+  .quick-links,
+  .customer-service,
+  .follow-us,
+  .payment-methods {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .quick-links,
+    .customer-service,
+    .follow-us,
+    .payment-methods {
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+  
+  .quick-links h3,
+  .customer-service h3,
+  .follow-us h3,
+  .payment-methods h3 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .quick-links ul li {
+    margin-bottom: 5px;
+  }
+  
+  .quick-links ul li a,
+  .customer-service p,
+  .payment-methods p {
+    color: #aaa;
+    text-decoration: none;
+  }
+  
+  .customer-service a {
+    color: #aaa;
+  }
+  
+  .follow-us .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media (min-width: 768px) {
+    .follow-us .social-icons {
+      justify-content: flex-start;
+    }
+  }
+  
+  .follow-us .social-icons li {
+    margin-right: 10px;
+  }
+  
+  .follow-us .social-icons li a img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #777;
+  }
+  
+  .footer-bottom a {
+    color: #777;
+    text-decoration: none;
+  }

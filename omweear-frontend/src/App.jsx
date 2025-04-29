@@ -9,7 +9,9 @@ import ResetPassword from './screens/ResetPassword.jsx'
 import Navbar from './components/Navbar.jsx'
 import News from './screens/News.jsx';
 import Home from './screens/Home.jsx';
-
+import Checkout from './screens/Checkout.jsx';
+import Wishlist from './screens/WishList.jsx';
+import ShoppingCart from './screens/ShoppingCart.jsx';
 
 function App() {
 
@@ -21,6 +23,9 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/news" element={<News />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/WishList" element={<Wishlist />} />
+      <Route path="/ShoppingCart" element={<ShoppingCart />} />
       </Routes>
       </BrowserRouter>
       

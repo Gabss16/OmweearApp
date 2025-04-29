@@ -2,11 +2,12 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Raleway', sans-serif; 
 }
+
 
 .navbar-container {
   max-width: 1200px;
@@ -20,8 +21,13 @@
 body {
   margin: 0;
   padding: 0;
+  
 }
 
+.news-section {
+  /* Otros estilos que ya tengas */
+  margin-top: 60px; /* Ajusta este valor según la altura de tu barra de navegación */
+}
 .logo {
   color: #040203;
   font-size: 24px;
@@ -37,7 +43,7 @@ body {
 .nav-links a {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
+  font-weight: 800;
   transition: color 0.3s ease;
 }
 

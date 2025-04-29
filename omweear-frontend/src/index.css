@@ -36,6 +36,20 @@ h1 {
 }
 
 css */
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw; /* 100% del ancho de la ventana */
+  min-height: 100vh; /* Al menos el 100% de la altura de la ventana */
+  font-family: 'Inter', sans-serif; /* Asegúrate de que la fuente esté definida */
+}
+
+#root { /* Si tu aplicación está renderizada dentro de un div con id "root" */
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -61,6 +75,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {

@@ -1,0 +1,264 @@
+.checkout-container {
+    padding: 30px; 
+    font-family: 'Raleway', sans-serif;
+  }
+  .checkout-container {
+    padding: 30px;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .checkout-header {
+    text-align-last: left;
+    padding: 20px 0; 
+    margin-bottom: 30px; 
+    
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .checkout-header h1 {
+    color: #000000;
+    margin: 0; 
+    font-size: 2.5rem; 
+  }
+  
+  
+  h1 {
+    color: #333;
+    margin-bottom: 30px; 
+    text-align: center;
+    font-size: 2rem; 
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px; 
+    font-size: 1.5rem; 
+  }
+  
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: 0.65fr 0.35fr; 
+    gap: 40px; 
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .checkout-details,
+  .order-summary {
+    padding: 25px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Formulario de dirección */
+  .shipping-form .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px; 
+  }
+  
+  .shipping-form .form-group {
+    flex-grow: 1;
+    margin-bottom: 15px;
+  }
+  
+  .shipping-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #000000;
+    font-size: 0.9rem;
+    
+  }
+  
+  .shipping-form .form-group input[type="text"],
+  .shipping-form .form-group input[type="tel"],
+  .shipping-form .form-group input[type="email"] {
+    width: 100%;
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align-last: left;
+    font-size: 1rem;
+    background-color: #ffffff; /* Nuevo color de fondo: blanco */
+    color: #000; 
+  }
+  
+  .shipping-form .form-group.postal-code {
+    flex-basis: 40%;
+  }
+  
+  .shipping-form .form-group.city-region {
+    flex-basis: 60%;
+  }
+  
+  .save-continue-button {
+    background-color: #6169d4bb;
+    color: white;
+    padding: 14px 20px; /* Aumenté el padding del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 25px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .save-continue-button:hover {
+    background-color: #333;
+  }
+  
+  /* Opciones de envío */
+  .shipping-options {
+    margin-top: 30px; 
+  }
+  
+  .shipping-item {
+    margin-bottom: 12px;
+  }
+  
+  .shipping-item label {
+    margin-left: 8px; 
+  }
+  
+  /* Mensaje de regalo */
+  .gift-message-section {
+    margin-top: 30px; 
+  }
+  
+  .gift-message-section textarea {
+    width: 100%;
+    min-height: 100px; 
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #ffffff; 
+  }
+  
+  /* Método de pago */
+  .payment-method-section {
+    margin-top: 30px; 
+  }
+  
+  .payment-option {
+    margin-bottom: 12px; 
+  }
+  
+  .payment-option label {
+    margin-left: 8px; 
+  }
+  
+  /* Resumen del pedido */
+  .order-summary {
+    background-color: #f9f9f9;
+    padding: 25px; 
+  }
+  
+  .summary-items {
+    margin-bottom: 25px; 
+  }
+  
+  .summary-items .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1rem; 
+    color: #555;
+  }
+  
+  .summary-totals {
+    border-top: 1px solid #eee;
+    padding-top: 18px; 
+  }
+  
+  .summary-totals .total-line {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1rem; 
+    color: #fcfcfc;
+  }
+  
+  .summary-totals .total-amount {
+    color: rgb(224, 21, 21);
+  }
+  
+  .summary-totals .includes-tax {
+    font-size: 0.9rem; 
+    color: #777;
+    text-align: right;
+    margin-top: 8px; 
+  }
+  
+  .promo-code {
+    display: flex;
+    margin-top: 30px; 
+  }
+
+  
+  
+  .promo-code label {
+    margin-right: 15px; 
+    color: #555;
+    font-size: 1rem; 
+    line-height: 2.2;
+  }
+  
+  .promo-code input[type="text"] {
+    flex-grow: 1;
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #db1010; 
+  }
+  
+  .promo-code .apply-button {
+    background-color: #d82727;
+    color: white;
+    padding: 12px 15px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; 
+    margin-left: 10px;
+  }
+  
+  .promo-code .apply-button:hover {
+    background-color: #b81717;
+  }
+  
+  .place-order-button {
+    background-color: #000;
+    color: white;
+    padding: 16px 20px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem; 
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px; 
+  }
+  
+  .place-order-button:hover {
+    background-color: #333;
+  }
+  
+  .accepted-payments {
+    margin-top: 20px; 
+    font-size: 0.9rem; 
+    color: #777;
+    text-align: center;
+  }
