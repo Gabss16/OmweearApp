@@ -3,9 +3,9 @@
   top: 0;
   width: 100%;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: none; /* Sin relieve */
 }
 
 .navbar-container {
@@ -13,7 +13,7 @@
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Alinea todo a la derecha */
   align-items: center;
 }
 
@@ -21,12 +21,24 @@
   color: #e91e63;
   font-size: 24px;
   font-weight: bold;
+  margin-right: auto; /* Hace que el logo quede a la izquierda, pero con todo a la derecha */
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links a {
@@ -51,4 +63,29 @@
 
 .login-btn a:hover {
   background-color: #c2185b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: height 0.3s ease;
+  }
+
+  .nav-links.open {
+    height: 250px; /* Ajusta según cuántos links tengas */
+  }
 }

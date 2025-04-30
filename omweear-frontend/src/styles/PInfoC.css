@@ -1,0 +1,40 @@
+.product-info {
+    padding: 0 20px;
+    max-width: 500px;
+  }
+  
+  .product-info h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .product-info ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  
+  .product-info li {
+    margin-bottom: 8px;
+  }
+  
+  .add-to-cart {
+    background-color: #b9cfff;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
