@@ -1,0 +1,28 @@
+.size-selector {
+    margin: 20px 0;
+  }
+  
+  .size-selector p {
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .size-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .size-btn {
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    background-color: #eee;
+    cursor: pointer;
+  }
+  
+  .size-btn.selected {
+    background-color: #b9cfff;
+    font-weight: bold;
+  }
+  

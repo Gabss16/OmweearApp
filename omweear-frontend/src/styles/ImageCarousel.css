@@ -1,0 +1,26 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  
+  .dot {
+    height: 8px;
+    width: 8px;
+    background-color: lightgray;
+    border-radius: 50%;
+    margin: 0 4px;
+  }
+  

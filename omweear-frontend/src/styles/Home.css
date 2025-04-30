@@ -1,19 +1,236 @@
+/* --- HEADER (BANNER) --- */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  padding-top: 2pc;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-left: 2rem;
+  padding-top: 2pc;
+  z-index: 2;
+}
+
+.header-text h1 {
+  font-size: 48px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.header-text p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.header-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --- HOME CONTAINER --- */
 .home-container {
-    background-image: url('../assets/background-home.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh; 
-    display: flex;
-    align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.discover-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* --- NEW ARRIVALS --- */
+.new-arrivals-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.section-title {
+  background: #eaeaea;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.new-arrivals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.new-arrival-card {
+  width: 180px;
+  text-align: center;
+  background: transparent;
+  border: none;
+}
+
+.new-arrival-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.arrival-colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #bbb;
+}
+
+.arrival-price {
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+}
+
+.arrival-add-btn {
+  font-size: 13px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #333;
+  margin-top: 0.3rem;
+}
+
+/* --- PROMO --- */
+.promo-section {
+  width: 100%;
+  background: #000;
+  border-radius: 5%;
+  color: white;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.promo-text {
+  flex: 1 1 300px;
+  max-width: 500px;
+}
+
+.promo-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.promo-text p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.blue-link {
+  color: #5e9cff;
+  text-decoration: underline;
+}
+
+.promo-image img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 2rem 1rem;
   }
-  
-  .home-content {
+
+  .header-text {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 100%;
     text-align: center;
+
+
     color: white;
     background-color: rgba(0, 0, 0, 0.4); 
     padding: 40px;
     border-radius: 12px;
+
   }
-  
+
+  .header-text h1 {
+    font-size: 32px;
+  }
+
+  .header-text p {
+    font-size: 16px;
+  }
+
+  .promo-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .promo-image img {
+    margin-top: 20px;
+  }
+}

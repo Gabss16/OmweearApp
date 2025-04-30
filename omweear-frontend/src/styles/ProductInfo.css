@@ -1,0 +1,51 @@
+
+/* ESTILOS GLOBALES (fuera de cualquier media query) */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+  }
+  
+  .page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  
+  .product-page-wrapper {
+    
+    flex: 1;
+  }
+  
+  /* PRODUCT CONTAINER */
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  
+  @media (min-width: 768px) {
+    .product-container {
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+    }
+  }
+  

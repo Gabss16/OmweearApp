@@ -11,7 +11,7 @@ const Navbar = () => {
         <b><h1 className="text-2xl font-bold text-black-900">Omweear</h1></b>
         <ul className="flex space-x-6 text-gray-700 font-medium">
           <li><Link to="/" className="hover:text-pink-500 transition">HOME</Link></li>
-          <li><Link to="/productos" className="hover:text-pink-500 transition">PRODUCTS</Link></li>
+          <li><Link to="/shop" className="hover:text-pink-500 transition">PRODUCTS</Link></li>
           <li><Link to="/nosotros" className="hover:text-pink-500 transition">CLOTHES</Link></li>
           <li><Link to="/contacto" className="hover:text-pink-500 transition">ACCESSORIES</Link></li>
         </ul>

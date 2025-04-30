@@ -1,79 +1,58 @@
-/*.main-footer {
-    background-color: #222;
-    color: #eee;
-    padding: 30px 20px;
-    font-size: 0.9rem;
-    margin-top: 40px;
-  }
-  
-  .footer-top {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .footer-logo {
-    flex-basis: 100%;
+
+.footer {
+    background-color: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
     text-align: center;
-    margin-bottom: 20px;
   }
   
-  @media (min-width: 768px) {
-    .footer-logo {
-      flex-basis: auto;
-      text-align: left;
-      margin-bottom: 0;
-    }
+  .footer-tagline {
+    font-size: 16px;
+    margin-bottom: 30px;
   }
   
-  .footer-links {
+  .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    gap: 30px;
+    text-align: left;
   }
   
-  @media (min-width: 768px) {
-    .footer-links {
-      width: auto;
-    }
+  .footer-section {
+    flex: 1 1 200px;
+    min-width: 200px;
   }
   
-  .quick-links,
-  .customer-service,
-  .follow-us,
-  .payment-methods {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  @media (min-width: 768px) {
-    .quick-links,
-    .customer-service,
-    .follow-us,
-    .payment-methods {
-      margin-bottom: 0;
-      text-align: left;
-    }
-  }
-  
-  .quick-links h3,
-  .customer-service h3,
-  .follow-us h3,
-  .payment-methods h3 {
-    color: #fff;
-    margin-top: 0;
+  .footer-section h4 {
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 16px;
+    color: #fff;
   }
   
-  .quick-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .footer-section ul {
+
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      max-width: 300px;
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
   }
   
+
   .quick-links ul li {
     margin-bottom: 5px;
   }
@@ -124,3 +103,4 @@
     color: #777;
     text-decoration: none;
   }
+
