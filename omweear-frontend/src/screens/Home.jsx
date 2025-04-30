@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 import React from 'react';
 import '../styles/Home.css';
-import modelImage from '../images/header.png'; 
+import modelImage from '../images/header1.png'; 
 import img1 from '../images/img1.jpg'; 
 import img2 from '../images/img2.jpg'; 
 import img3 from '../images/img3.jpg'; 

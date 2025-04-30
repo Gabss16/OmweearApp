@@ -1,8 +1,7 @@
-// components/ProductCard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ imageUrl, price }) => {
+const ProductCard = ({ id, imageUrl, price }) => {
   const navigate = useNavigate();
 
   const handleViewClick = () => {
