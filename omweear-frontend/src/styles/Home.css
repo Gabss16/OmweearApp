@@ -208,6 +208,13 @@
     border-radius: 10px;
     width: 100%;
     text-align: center;
+
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 40px;
+    border-radius: 12px;
+
   }
 
   .header-text h1 {

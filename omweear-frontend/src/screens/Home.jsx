@@ -1,5 +1,6 @@
 // src/components/Header.jsx
 import React from 'react';
+
 import '../styles/Home.css';
 import modelImage from '../images/header1.png'; 
 import img1 from '../images/img1.jpg'; 
@@ -37,6 +38,7 @@ const Header = () => {
       colors: ['#1c1c2c', '#ffffff']
     },
   ];
+
 
   return (
     <>

@@ -6,7 +6,9 @@
   z-index: 1000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: none; /* Sin relieve */
+
 }
+
 
 .navbar-container {
   max-width: 1200px;
@@ -17,11 +19,21 @@
   align-items: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.news-section {
+  /* Otros estilos que ya tengas */
+  margin-top: 60px; 
+}
 .logo {
-  color: #e91e63;
+  color: #040203;
   font-size: 24px;
   font-weight: bold;
-  margin-right: auto; /* Hace que el logo quede a la izquierda, pero con todo a la derecha */
+  margin-right: auto; 
 }
 
 .menu-toggle {
@@ -44,12 +56,12 @@
 .nav-links a {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
+  font-weight: 800;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #e91e63;
+  color: #000000;
 }
 
 .login-btn a {
@@ -62,7 +74,7 @@
 }
 
 .login-btn a:hover {
-  background-color: #c2185b;
+  background-color: #000000;
 }
 
 /* RESPONSIVE */
