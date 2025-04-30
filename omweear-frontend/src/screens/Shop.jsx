@@ -29,7 +29,7 @@ const Shop = () => {
       {/* Banner principal */}
       <div className="header">
         <div className="header-text">
-          <h1>OmWwear</h1>
+          <h1>OmWeear</h1>
           <p>Ríndete sobre your clothes</p>
         </div>
 

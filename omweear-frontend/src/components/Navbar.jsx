@@ -12,8 +12,8 @@ const Navbar = () => {
         <ul className="flex space-x-6 text-gray-700 font-medium">
           <li><Link to="/" className="hover:text-pink-500 transition">HOME</Link></li>
           <li><Link to="/shop" className="hover:text-pink-500 transition">PRODUCTS</Link></li>
-          <li><Link to="/nosotros" className="hover:text-pink-500 transition">CLOTHES</Link></li>
-          <li><Link to="/contacto" className="hover:text-pink-500 transition">ACCESSORIES</Link></li>
+          <li><Link to="/wishlist" className="hover:text-pink-500 transition">FAVORITES</Link></li>
+          <li><Link to="/shoppingcart" className="hover:text-pink-500 transition">CART</Link></li>
         </ul>
         <div>
           <Link to="/login" className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition">Login</Link>
