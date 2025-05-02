@@ -30,6 +30,8 @@ body, html {
   font-weight: bolder;
 }
 
+
+
 .left-section h1 {
   font-size: 3em;
   color: white;
@@ -91,8 +93,9 @@ input {
   outline: none;
 }
 
-.login-btn {
-  width: 70%;
+.linklogin{
+  align-items: center;
+  width: 100%;
   padding: 12px;
   background-color: #9EB0C9;
   color: white;
@@ -102,7 +105,9 @@ input {
   margin-top: 10px;
   font-size: 0.9rem;
   font-weight: bold;
+  text-align: center;
 }
+
 
 .forgot-password, a {
   color: #8D8DC6;

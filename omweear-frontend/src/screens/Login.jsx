@@ -23,11 +23,11 @@ const Login = () => {
           <button className="social-btn google"><img src={Glbtn} alt="Google" /></button>
         </div>
         <p>O usar tu correo electrónico y contraseña</p>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form className= "formlogin" onSubmit={(e) => e.preventDefault()}>
           <input type="email" placeholder="Correo electrónico" />
           <input type="password" placeholder="Contraseña" />
           <Link to="/recover-password" className="forgot-password">¿Has olvidado tu contraseña?</Link>
-          <button type="submit" className="login-btn">Iniciar sesión</button>
+          <Link className="linklogin" to="/">Iniciar sesión</Link>
         </form>
         <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
       </div>
