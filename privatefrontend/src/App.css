@@ -91,14 +91,13 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.5rem center; /* Posiciona la flecha a la derecha y centrada verticalmente */
-  background-size: 1.5em; /* Tamaño de la flecha (aproximadamente 24px) */
-  cursor: pointer; /* Cambia el cursor para indicar que es un elemento interactivo */
+  background-size: 1.5em; 
+  cursor: pointer;
 
   /* Transiciones para un efecto suave al enfocar */
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Estilo al enfocar el desplegable (cuando el usuario hace clic o tabula sobre él) */
 .custom-select-dropdown:focus {
   outline: none; /* Elimina el contorno de enfoque predeterminado del navegador */
   border-color: #3B82F6; /* Cambia el color del borde a azul (similar a Tailwind blue-500) */
@@ -115,9 +114,20 @@ body {
 
 /* Opcional: Si necesitas un estilo para el contenedor para controlar el ancho */
 /* Puedes envolver tu select en un div y darle un ancho fijo o flexible */
-/*
+
 .select-container {
   position: relative;
-  width: 100%; // O un ancho fijo como max-width: 300px;
+  width: 100%; 
+   max-width: 300px;
 }
-*/
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}

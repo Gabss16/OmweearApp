@@ -13,7 +13,7 @@ export default function AddCategory() {
           {/* Imagen */}
           <div className="add-category-photo">
             <img
-              src="https://i.pinimg.com/736x/0b/d1/8b/0bd18bf94355ed5469e7c810be999c9f.jpg"
+              src="https://i.pinimg.com/736x/d0/cb/e1/d0cbe19f03f5c56bd6cfbd55295f4262.jpg"
               alt="Category preview"
             />
             <button>Add Photo</button>

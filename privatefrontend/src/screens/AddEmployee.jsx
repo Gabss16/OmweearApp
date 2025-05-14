@@ -13,7 +13,7 @@ export default function AddEmployee() {
           {/* Imagen */}
           <div className="add-employee-photo">
             <img
-              src="https://i.pinimg.com/736x/0b/d1/8b/0bd18bf94355ed5469e7c810be999c9f.jpg"
+              src="https://i.pinimg.com/736x/b4/f2/a3/b4f2a3e6e84314b8dd922cd7c3df0b07.jpg"
               alt="employee preview"
             />
             <button>Add Photo</button>
@@ -49,7 +49,7 @@ export default function AddEmployee() {
   <option value="" disabled selected>Gender</option>
   <option value="Female">Female</option>
   <option value="Male">Male</option>
-  <option value="Others">Others</option>
+  <option value="Others">Other</option>
 </select>           
            
             <button type="submit" className="submit-btn">Agree </button>
