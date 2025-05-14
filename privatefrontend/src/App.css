@@ -1,42 +1,123 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* src/App.css */
+
+:root {
+    /* Variables CSS globales */
+    --bg-color-dark: #23272B;
+    --bg-color-light: #FFFFFF;
+    --sidebar-bg: #23272B;
+    --text-color-dark: #E0E0E0;
+    --text-color-light: #333333;
+    --primary-color: #4A90E2;
+    --border-color: #E0E0E0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color-dark);
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Cambiado a 1fr para simplificar, ya no hay Navbar */
+    min-height: calc(100vh - 40px);
+    background-color: var(--bg-color-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    margin: 20px;
 }
 
-.card {
-  padding: 2em;
+.main-content {
+    background-color: var(--bg-color-light);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
-.read-the-docs {
-  color: #888;
+/* Media Queries para la responsividad (ajusta según tu diseño) */
+@media (max-width: 1200px) {
+    .app-container {
+        margin: 10px;
+    }
 }
+
+@media (max-width: 768px) {
+    .app-container {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* Estilos para el desplegable (select) con flecha personalizada */
+.custom-select-dropdown {
+  /* Dimensiones y espaciado */
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  padding: 0.5rem; /* Relleno interno (padding) de 8px */
+  padding-right: 2.5rem; /* Relleno extra a la derecha para dejar espacio a la flecha */
+  line-height: 1.5; /* Altura de línea para el texto */
+  
+  /* Bordes y fondo */
+  border: 1px solid #D1D5DB; /* Borde de color gris claro */
+  border-radius: 0.375rem; /* Bordes ligeramente redondeados (aprox. 6px) */
+  background-color: #FFFFFF; /* Fondo blanco */
+
+  /* Fuente y color de texto (puedes ajustarlos si es necesario) */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem; /* Tamaño de fuente */
+  color: #333333; /* Color de texto oscuro */
+
+  /* Ocultar la flecha predeterminada del navegador */
+  appearance: none;
+  -webkit-appearance: none; /* Para compatibilidad con navegadores basados en Webkit (Chrome) */
+  -moz-appearance: none;    /* Para compatibilidad con navegadores Firefox */
+
+  /* Flecha personalizada usando un SVG en Base64 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center; /* Posiciona la flecha a la derecha y centrada verticalmente */
+  background-size: 1.5em; /* Tamaño de la flecha (aproximadamente 24px) */
+  cursor: pointer; /* Cambia el cursor para indicar que es un elemento interactivo */
+
+  /* Transiciones para un efecto suave al enfocar */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Estilo al enfocar el desplegable (cuando el usuario hace clic o tabula sobre él) */
+.custom-select-dropdown:focus {
+  outline: none; /* Elimina el contorno de enfoque predeterminado del navegador */
+  border-color: #3B82F6; /* Cambia el color del borde a azul (similar a Tailwind blue-500) */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Añade una sombra azul suave alrededor */
+}
+
+/* Estilo para el placeholder (primera opción) */
+.custom-select-dropdown option[value=""][disabled] {
+    color: #6B7280; /* Un gris más claro para el placeholder */
+}
+.custom-select-dropdown option:not([value=""]) {
+    color: #333333; /* Color de texto normal para las opciones reales */
+}
+
+/* Opcional: Si necesitas un estilo para el contenedor para controlar el ancho */
+/* Puedes envolver tu select en un div y darle un ancho fijo o flexible */
+/*
+.select-container {
+  position: relative;
+  width: 100%; // O un ancho fijo como max-width: 300px;
+}
+*/
