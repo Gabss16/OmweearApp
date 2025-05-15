@@ -5,12 +5,14 @@ import Register from './screens/Register.jsx';
 import RecoverPassword from './screens/Recoverpassword.jsx'
 import VerifyCode from './screens/VerifyCode.jsx'
 import ResetPassword from './screens/ResetPassword.jsx';
+import Profile from './screens/Profile.jsx';
+import AddSuppliers from './screens/AddSuppliers.jsx';
 
 function App() {
 
   return (
     <> 
-      <ResetPassword/>
+      <Login/>
     </>
   )
 }
