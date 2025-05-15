@@ -5,7 +5,7 @@ import '../screens/AddEmployee.css';
 export default function AddEmployee() {
   return (
     <div className="add-employee-container">
-      <Navbar />
+     
       <main className="add-employee-main">
         <h1 className="add-employee-title"><span> Add Employee</span></h1>
         
@@ -32,25 +32,19 @@ export default function AddEmployee() {
 
         
 {/* Desplegable para "Charger" */}
-<select
-  className="custom-select-dropdown" 
-
->
-  <option value="" disabled selected>Charger</option>
+<select className="custom-select-dropdown" defaultValue="">
+  <option value="" disabled>Charger</option>
   <option value="Manager">Manager</option>
   <option value="shop assistant">shop assistant</option>
-  
 </select>
 
-<select
-  className="custom-select-dropdown" 
-
->
-  <option value="" disabled selected>Gender</option>
+{/* Desplegable para "Gender" */}
+<select className="custom-select-dropdown" defaultValue="">
+  <option value="" disabled>Gender</option>
   <option value="Female">Female</option>
   <option value="Male">Male</option>
   <option value="Others">Other</option>
-</select>           
+</select>
            
             <button type="submit" className="submit-btn">Agree </button>
           </form>

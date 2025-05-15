@@ -1,11 +1,10 @@
 
-import Navbar from '../components/Navbar';
 import '../screens/AddAccessory.css';
 
 export default function AddAccessory() {
   return (
     <div className="add-accessory-container">
-      <Navbar />
+      
       <main className="add-accessory-main">
         <h1 className="add-accessory-title"><span> Add Accessorie</span></h1>
         
@@ -23,53 +22,42 @@ export default function AddAccessory() {
           <form className="add-accessory-form">
             <input type="text" placeholder="Name" />
             <input type="text" placeholder="Price" />
-{/* Desplegable para "Brand" */}
-<select
-  className="custom-select-dropdown" 
->
-  <option value="" disabled selected>Brand</option> {/* `disabled` y `selected` para que sea un placeholder real */}
-  <option value="Omweear">Omweear</option>
-  <option value="Nike">Nike</option>
-  <option value="Adidas">Adidas</option>
-</select>
-
-{/* Desplegable para "Stock" */}
-<select
-  className="custom-select-dropdown" 
->
-  <option value="" disabled selected>Stock</option>
-  <option value="10">10</option>
-  <option value="50">50</option>
-  <option value="100">100</option>
-</select>
-
             
+            {/* Desplegable para "Brand" */}
+            <select className="custom-select-dropdown" defaultValue="">
+              <option value="" disabled>Brand</option>
+              <option value="Omweear">Omweear</option>
+              <option value="Nike">Nike</option>
+              <option value="Adidas">Adidas</option>
+            </select>
 
-{/* Desplegable para "Categoria" */}
-<select
-  className="custom-select-dropdown" 
+            {/* Desplegable para "Stock" */}
+            <select className="custom-select-dropdown" defaultValue="">
+              <option value="" disabled>Stock</option>
+              <option value="10">10</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
 
->
-  <option value="" disabled selected>Categorie</option>
-  <option value="Tops">Tops</option>
-  <option value="Leggins">Leggins</option>
-  <option value="Short">Short</option>
-</select>
+            {/* Desplegable para "Categoria" */}
+            <select className="custom-select-dropdown" defaultValue="">
+              <option value="" disabled>Categorie</option>
+              <option value="Tops">Tops</option>
+              <option value="Leggins">Leggins</option>
+              <option value="Short">Short</option>
+            </select>
 
-<select
-  className="custom-select-dropdown" 
+            {/* Desplegable para "Supplier" */}
+            <select className="custom-select-dropdown" defaultValue="">
+              <option value="" disabled>Supplier</option>
+              <option value="Alo">Alo</option>
+              <option value="Gym">Gym</option>
+              <option value="Fits">Fits</option>
+            </select> 
 
->
-  <option value="" disabled selected>Supplier</option>
-  <option value="Alo">Alo</option>
-  <option value="Gym">Gym</option>
-  <option value="Fits">Fits</option>
-</select>           
             <textarea placeholder="Description" className="full-width" rows="3"></textarea>
 
-          
-
-            <button type="submit" className="submit-btn">Add Clothe</button>
+            <button type="submit" className="submit-btn">Add Accessory</button>
           </form>
         </section>
 

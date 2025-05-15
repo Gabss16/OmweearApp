@@ -1,11 +1,11 @@
 
-import Navbar from '../components/Navbar';
+import Category from "../images/category.jpg"
 import '../screens/AddCategory.css';
 
 export default function AddCategory() {
   return (
     <div className="add-category-container">
-      <Navbar />
+      
       <main className="add-category-main">
         <h1 className="add-category-title"><span> Add Categories</span></h1>
         
@@ -13,7 +13,7 @@ export default function AddCategory() {
           {/* Imagen */}
           <div className="add-category-photo">
             <img
-              src="https://i.pinimg.com/736x/d0/cb/e1/d0cbe19f03f5c56bd6cfbd55295f4262.jpg"
+              src={Category}
               alt="Category preview"
             />
             <button>Add Photo</button>

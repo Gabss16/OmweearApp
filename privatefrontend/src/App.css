@@ -1,133 +1,105 @@
-/* src/App.css */
-
-:root {
-    /* Variables CSS globales */
-    --bg-color-dark: #23272B;
-    --bg-color-light: #FFFFFF;
-    --sidebar-bg: #23272B;
-    --text-color-dark: #E0E0E0;
-    --text-color-light: #333333;
-    --primary-color: #4A90E2;
-    --border-color: #E0E0E0;
-    --shadow-light: rgba(0, 0, 0, 0.05);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color-dark);
-    line-height: 1.6;
-    min-height: 100vh;
-}
-
+/* Estilos generales para el layout */
 .app-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Cambiado a 1fr para simplificar, ya no hay Navbar */
-    min-height: calc(100vh - 40px);
-    background-color: var(--bg-color-light);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    margin: 20px;
-}
-
-.main-content {
-    background-color: var(--bg-color-light);
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    overflow-y: auto;
-    flex-grow: 1;
-}
-
-/* Media Queries para la responsividad (ajusta según tu diseño) */
-@media (max-width: 1200px) {
-    .app-container {
-        margin: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .app-container {
-        margin: 0;
-        border-radius: 0;
-    }
-
-    .main-content {
-        padding: 15px;
-    }
-}
-
-/* Estilos para el desplegable (select) con flecha personalizada */
-.custom-select-dropdown {
-  /* Dimensiones y espaciado */
-  width: 100%; /* Ocupa el ancho completo del contenedor */
-  padding: 0.5rem; /* Relleno interno (padding) de 8px */
-  padding-right: 2.5rem; /* Relleno extra a la derecha para dejar espacio a la flecha */
-  line-height: 1.5; /* Altura de línea para el texto */
+    display: flex; /* Esto alinea el navbar a la izquierda y el contenido a la derecha */
+    height: 100vh;
+    width: 100vw;
+  }
   
-  /* Bordes y fondo */
-  border: 1px solid #D1D5DB; /* Borde de color gris claro */
-  border-radius: 0.375rem; /* Bordes ligeramente redondeados (aprox. 6px) */
-  background-color: #FFFFFF; /* Fondo blanco */
-
-  /* Fuente y color de texto (puedes ajustarlos si es necesario) */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem; /* Tamaño de fuente */
-  color: #333333; /* Color de texto oscuro */
-
-  /* Ocultar la flecha predeterminada del navegador */
-  appearance: none;
-  -webkit-appearance: none; /* Para compatibilidad con navegadores basados en Webkit (Chrome) */
-  -moz-appearance: none;    /* Para compatibilidad con navegadores Firefox */
-
-  /* Flecha personalizada usando un SVG en Base64 */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center; /* Posiciona la flecha a la derecha y centrada verticalmente */
-  background-size: 1.5em; 
-  cursor: pointer;
-
-  /* Transiciones para un efecto suave al enfocar */
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.custom-select-dropdown:focus {
-  outline: none; /* Elimina el contorno de enfoque predeterminado del navegador */
-  border-color: #3B82F6; /* Cambia el color del borde a azul (similar a Tailwind blue-500) */
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Añade una sombra azul suave alrededor */
-}
-
-/* Estilo para el placeholder (primera opción) */
-.custom-select-dropdown option[value=""][disabled] {
-    color: #6B7280; /* Un gris más claro para el placeholder */
-}
-.custom-select-dropdown option:not([value=""]) {
-    color: #333333; /* Color de texto normal para las opciones reales */
-}
-
-/* Opcional: Si necesitas un estilo para el contenedor para controlar el ancho */
-/* Puedes envolver tu select en un div y darle un ancho fijo o flexible */
-
-.select-container {
-  position: relative;
-  width: 100%; 
-   max-width: 300px;
-}
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.app-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-}
+  .navbar {
+    width: 250px; /* Ajusta el tamaño del navbar */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    position: fixed; /* Hace que el navbar se quede fijo al hacer scroll */
+    height: 100vh; /* Asegura que el navbar ocupe toda la altura de la pantalla */
+    z-index: 10;
+  }
+  
+  .content-container {
+    /*margin-left: 270px; /* Espacio para que el contenido no se sobreponga al navbar */
+    padding: 20px;
+    width: calc(100vw - 270px); /* Ajusta el tamaño para ocupar el resto de la pantalla */
+    overflow-y: auto; /* Si el contenido es largo, habilita el scroll */
+    height: 100vh; /* Asegura que el contenido ocupe toda la altura de la pantalla */
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  /* Estilos del navbar */
+  .navbar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .navbar a:hover {
+    background-color: #575757;
+  }
+  
+  /* Estilo del botón del navbar */
+  .navbar button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .navbar button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo del contenido de las páginas */
+  .add-employee-container,
+  .add-accessory-container,
+  .add-clothes-container,
+  .add-category-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .add-employee-main,
+  .add-accessory-main,
+  .add-clothes-main,
+  .add-category-main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Asegura que el contenido principal tenga suficiente espacio */
+  .content-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh; /* Hace que el contenido ocupe toda la pantalla */
+    background-color: #fff; /* Fondo blanco para el contenido */
+  }
+  
