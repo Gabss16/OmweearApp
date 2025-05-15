@@ -1,0 +1,68 @@
+.order-card {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+  }
+  
+  .order-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .user-icon {
+    background-color: #f36;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+  }
+  
+  .status-badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: white;
+    font-size: 12px;
+  }
+  
+  .order-items-header,
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+  }
+  
+  .order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .order-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .order-actions button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #f1f1f1;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

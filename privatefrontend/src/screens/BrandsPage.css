@@ -1,0 +1,57 @@
+.brands-page {
+    padding: 40px;
+    font-family: sans-serif;
+  }
+  
+  .brands-page h1 {
+    font-size: 32px;
+  }
+  
+  .brands-page h1 span {
+    color: #3048a0;
+  }
+  
+  .form-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  form {
+    flex: 1;
+    min-width: 250px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form input,
+  form textarea {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    background-color: #1e1b4b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  form img {
+    max-width: 300px;
+    height: auto;
+  }
+  
+  img {
+    max-height: 180px;
+  }
+  

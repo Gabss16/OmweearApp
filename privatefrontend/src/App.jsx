@@ -12,6 +12,9 @@ import AddEmployee from './screens/AddEmployee.jsx';
 import ResetPassword from './screens/ResetPassword.jsx';
 import Profile from './screens/Profile.jsx';
 import AddSuppliers from './screens/AddSuppliers.jsx';
+import AddBrands from './screens/BrandsPage.jsx';
+import Orders from './screens/Orders.jsx';
+
 
 function App() {
 
