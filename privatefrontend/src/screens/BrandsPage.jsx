@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
-import CustomTable from '../components/CustomTable';
+import CustomTable from '../components/Brands/CustomTable';
 import './BrandsPage.css';
 //import brandImage from '../assets/brand.png';
+import userDataBrands from '../components/Brands/hooks/userDataBrands';
 
 const BrandsPage = () => {
+
+  const { activeTab,
+
+    loading,
+    setLoading,
+    brands,
+    setBrands,
+    cleanData,
+    handleSubmit,
+    fetchData,
+    deleteBrand,
+    updateBrand,
+    handleUpdate,}=userDataBrands();
+/*
   const [brandData, setBrandData] = useState([
     { Name: 'Señoritas', Description: 'Para las señoritas' },
     { Name: 'Damas', Description: 'Para las damas' },
     { Name: 'Accesorios', Description: 'Son accesorios' },
-  ]);
+  ]);*/
 
   const [formData, setFormData] = useState({ Name: '', Description: '' });
 
-  const handleSubmit = (e) => {
+  const handleSubmit2 = (e) => {
     e.preventDefault();
     setBrandData([...brandData, formData]);
     setFormData({ Name: '', Description: '' });
@@ -43,7 +58,7 @@ const BrandsPage = () => {
        
       </div>
 
-      <CustomTable columns={['Name', 'Description']} data={brandData} />
+      <CustomTable columns={['Name', 'Description', "Actions"]} data={brands} />
     </div>
   );
 };

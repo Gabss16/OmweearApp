@@ -10,10 +10,18 @@ import sales from "./src/routes/sales.js";
 import shoppingCart from "./src/routes/shoppingCart.js";
 import supliers from "./src/routes/suppliers.js";
 import wishlist from "./src/routes/wishlist.js";
+import cors from "cors";
 
 
 const app = express();
 
+
+app.use(
+    cors({
+      origin: "*", // Dominio del cliente
+      credentials: true, // Permitir envío de cookies y credenciales
+    })
+  );
 
 app.use(express.json());
 

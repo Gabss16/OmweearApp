@@ -13,7 +13,7 @@ const userDataBrands = () => {
       const [errorBrand, setError] = useState(null);
       const [success, setSuccess] = useState(null);
       const [loading, setLoading] = useState(false);
-      const [brand, setBrands] = useState([]);
+      const [brands, setBrands] = useState([]);
     
       const cleanData = () => {
         setName("");
@@ -181,7 +181,7 @@ return {
     setSuccess,
     loading,
     setLoading,
-    brand,
+    brands,
     setBrands,
     cleanData,
     handleSubmit,

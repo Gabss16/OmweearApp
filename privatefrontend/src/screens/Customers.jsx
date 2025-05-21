@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CustomTable from '../components/CustomTable';
+//import CustomTable from '../components/CustomTable';
 import './BrandsPage.css';
 //import brandImage from '../assets/brand.png';
 
@@ -43,7 +43,9 @@ const BrandsPage = () => {
        
       </div>
 
-      <CustomTable columns={['Name', 'Description']} data={brandData} />
+      
+     {/* <CustomTable columns={['Name', 'Description']} data={brandData} />*/}
+
     </div>
   );
 };
