@@ -12,6 +12,10 @@ const brandsSchema = new Schema({
     name:{
         type: String,
         require: true,
+        match: [
+            /^[A-Za-z\s]+$/,
+            "El nombre solo puede contener letras y espacios",
+          ],
         
     },
     description:{
