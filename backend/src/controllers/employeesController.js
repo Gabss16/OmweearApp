@@ -20,7 +20,7 @@ employeesController.createEmployees = async (req, res) => {
  
     //DELETE
     employeesController.deleteEmployees = async (req, res) => {
-    await employeesModel.findOneAndDelete(req.params.id)
+    await employeesModel.findByIdAndDelete(req.params.id)
     res.json({message:"employees deleted"})
 }
 

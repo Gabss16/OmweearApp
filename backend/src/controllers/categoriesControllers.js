@@ -19,7 +19,7 @@ categoriesController.createCategories = async (req, res) => {
 }
     //DELETE
 categoriesController.deleteCategories = async (req, res) => {
-    await categoriesModel.findOneAndDelete(req.params.id)
+    await categoriesModel.findByIdAndDelete(req.params.id)
     res.json({message:"categorie deleted"})
 }
 

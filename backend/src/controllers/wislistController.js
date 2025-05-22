@@ -14,7 +14,7 @@ wishListControllers.postWishlist = async (req, res) => {
 }
 
 wishListControllers.deleteWishlist = async (req, res) => {
-    await wishListModel.findOneAndDelete(req.params.id)
+    await wishListModel.findByIdAndDelete(req.params.id)
     res.json({message: "Wishlist Deleted"})
 }
 

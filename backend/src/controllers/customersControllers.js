@@ -19,7 +19,7 @@ customersControllers.createCustomers = async (req, res) => {
 }
     //DELETE
 customersControllers.deleteCustomers = async (req, res) => {
-    await customersControllers.findOneAndDelete(req.params.id)
+    await customersControllers.findByIdAndDelete(req.params.id)
     res.json({message:"Customer deleted"})
 }
 

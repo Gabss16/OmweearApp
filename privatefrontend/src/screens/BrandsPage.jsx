@@ -1,66 +1,59 @@
-import React, { useState } from 'react';
-import CustomTable from '../components/Brands/CustomTable';
-import './BrandsPage.css';
-//import brandImage from '../assets/brand.png';
-import userDataBrands from '../components/Brands/hooks/userDataBrands';
+// BrandsPage.jsx
+import React from "react";
+import RegisterBrand from "../components/Brands/RegisterBrand";
+import CustomTable from "../components/Brands/CustomTable";
+import userDataBrands from "../components/Brands/hooks/userDataBrands";
+import { Toaster } from "react-hot-toast";
 
-const BrandsPage = () => {
-
-  const { activeTab,
-
-    loading,
-    setLoading,
+const Brands = () => {
+  const {
+    name,
+    setName,
+    description,
+    setDescription,
     brands,
-    setBrands,
-    cleanData,
     handleSubmit,
-    fetchData,
     deleteBrand,
-    updateBrand,
-    handleUpdate,}=userDataBrands();
-/*
-  const [brandData, setBrandData] = useState([
-    { Name: 'Señoritas', Description: 'Para las señoritas' },
-    { Name: 'Damas', Description: 'Para las damas' },
-    { Name: 'Accesorios', Description: 'Son accesorios' },
-  ]);*/
-
-  const [formData, setFormData] = useState({ Name: '', Description: '' });
-
-  const handleSubmit2 = (e) => {
-    e.preventDefault();
-    setBrandData([...brandData, formData]);
-    setFormData({ Name: '', Description: '' });
-  };
+    updateBrand,  // Asegúrate de recibir updateBrand aquí
+    handleUpdate,
+    id,
+  } = userDataBrands();
 
   return (
-    <div className="brands-page">
-      <h1>
-        Add <span>Brands</span>
-      </h1>
-      <div className="form-brand">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Name"
-            value={formData.Name}
-            onChange={(e) => setFormData({ ...formData, Name: e.target.value })}
-          />
-          <textarea
-            placeholder="Description"
-            value={formData.Description}
-            onChange={(e) => setFormData({ ...formData, Description: e.target.value })}
-          />
-          <button className="submit-btn" type="submit">
-            Add Brand
-          </button>
-        </form>
-       
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Gestión de Marcas</h1>
+
+        {/* Formulario de registro */}
+        <RegisterBrand
+        id = {id}
+          name={name}
+          setName={setName}
+          description={description}
+          setDescription={setDescription}
+          handleSubmit={handleSubmit}
+          handleUpdate={handleUpdate}  // Pasa handleUpdate si se va a editar una marca
+          updateBrand={updateBrand}  // Pasa updateBrand para cuando se hace clic en Editar
+        />
+
+        {/* Tabla de marcas */}
+        <CustomTable
+          columns={["Name", "Description", "Actions"]}
+          data={brands.map((b) => ({
+            name: b.name,
+            description: b.description,
+            _id: b._id
+          }))}
+          onDelete={deleteBrand}
+          onEdit={updateBrand}  // Aquí se pasa updateBrand cuando se va a editar
+          headerTitle="Tabla de Marcas"
+          headerDescription="Visualiza y gestiona tus marcas registradas"
+        />
       </div>
 
-      <CustomTable columns={['Name', 'Description', "Actions"]} data={brands} />
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
 };
 
-export default BrandsPage;
+export default Brands;

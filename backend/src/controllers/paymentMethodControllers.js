@@ -20,7 +20,7 @@ PaymentMethodController.createPaymentMethod = async (req, res) => {
  
     //DELETE
     PaymentMethodController.deletePaymentMethod = async (req, res) => {
-    await PaymentMethodModel.findOneAndDelete(req.params.id)
+    await PaymentMethodModel.findByIdAndDelete(req.params.id)
     res.json({message:"PaymentMethod  deleted"})
 }
 

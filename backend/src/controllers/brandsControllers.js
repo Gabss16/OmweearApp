@@ -17,7 +17,7 @@ brandsControllers.createbrands = async (req, res) => {
 }
     //DELETE
 brandsControllers.deletebrands = async (req, res) => {
-    await brandsModel.findOneAndDelete(req.params.id)
+    await brandsModel.findByIdAndDelete(req.params.id)
     res.json({message:"brand deleted"})
     }
     

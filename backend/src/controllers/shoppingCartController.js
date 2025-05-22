@@ -20,7 +20,7 @@ shoppingCartController.createCart = async (req, res) => {
  
     //DELETE
     shoppingCartController.deleteCart = async (req, res) => {
-    await shopingCartModel.findOneAndDelete(req.params.id)
+    await shopingCartModel.findByIdAndDelete(req.params.id)
     res.json({message:"Shopping cart deleted"})
 }
 

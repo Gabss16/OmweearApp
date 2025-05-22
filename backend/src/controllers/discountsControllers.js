@@ -14,7 +14,7 @@ discountsControllers.postDiscounts = async (req, res) => {
 }
 
 discountsControllers.deleteDiscounts = async (req, res) => {
-    await customersModel.findOneAndDelete(req.params.id)
+    await customersModel.findByIdAndDelete(req.params.id)
     res.json({message: "Discount Deleted"})
 }
 

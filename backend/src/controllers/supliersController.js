@@ -14,7 +14,7 @@ suppliersControllers.postSuppliers = async (req, res) => {
 }
 
 suppliersControllers.deleteSuppliers = async (req, res) => {
-    await suppliersModel.findOneAndDelete(req.params.id)
+    await suppliersModel.findByIdAndDelete(req.params.id)
     res.json({message: "Supplier Deleted"})
 }
 
