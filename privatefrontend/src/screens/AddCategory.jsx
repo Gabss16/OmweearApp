@@ -1,58 +1,58 @@
+import React from "react";
+import RegisterCategories from "../components/Categories/RegisterCategories";
+import CustomTable from "../components/Categories/CustomTable";
+import userDataCategories from "../components/Categories/hooks/userDataCategories";
+import { Toaster } from "react-hot-toast";
 
-import Category from "../images/category.jpg"
-import '../screens/AddCategory.css';
+const Categories = () => {
+  const {
+    name,
+    setName,
+    description,
+    setDescription,
+    categories,
+    handleSubmit,
+    deleteCategory,
+    updateCategory,
+    handleUpdate,
+    id,
+  } = userDataCategories();
 
-export default function AddCategory() {
   return (
-    <div className="add-category-container">
-      
-      <main className="add-category-main">
-        <h1 className="add-category-title"><span> Add Categories</span></h1>
-        
-        <section className="add-category-form-section">
-          {/* Imagen */}
-          <div className="add-category-photo">
-            <img
-              src={Category}
-              alt="Category preview"
-            />
-            <button>Add Photo</button>
-          </div>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Gestión de Categorías</h1>
 
-          {/* Formulario */}
-          <form className="add-category-form">
-            <input type="text" placeholder="Name" />
-            <textarea placeholder="Description" className="full-width" rows="3"></textarea>
-       
-    
-            <button type="submit" className="submit-btn">Add Category</button>
-          </form>
-        </section>
+        {/* Formulario de registro */}
+        <RegisterCategories
+          id={id}
+          name={name}
+          setName={setName}
+          description={description}
+          setDescription={setDescription}
+          handleSubmit={handleSubmit}
+          handleUpdate={handleUpdate}
+          updateCategory={updateCategory}
+        />
 
-        {/* Tabla */}
-        <section className="add-category-table-section">
-          <input type="text" placeholder="Search" className="search-input" />
+        {/* Tabla de categorías */}
+        <CustomTable
+          columns={["Name", "Description", "Actions"]}
+          data={categories.map((cat) => ({
+            name: cat.name,
+            description: cat.description,
+            _id: cat._id,
+          }))}
+          onDelete={deleteCategory}
+          onEdit={updateCategory}
+          headerTitle="Tabla de Categorías"
+          headerDescription="Visualiza y gestiona tus categorías registradas"
+        />
+      </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th><th>Description</th><th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Top</td><td>Tururu</td><td>Oj.jpg</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div className="table-actions">
-            <button className="green">Add</button>
-            <button className="yellow">Edit</button>
-            <button className="red">Delete</button>
-          </div>
-        </section>
-      </main>
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
-}
+};
+
+export default Categories;

@@ -67,6 +67,15 @@ input, textarea, select, button {
      display: flex;
   }
 
+.add-employee-table-section{
+  color: #000000  ;
+  text-decoration-color: #000000;
+}
+
+.search-input{
+  color: #101b81;
+}
+
 
 body
 {
@@ -180,6 +189,8 @@ table {
 th, td {
   padding: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
+   background-color: white; /* fondo negro */
+  color: #000000;
 }
 
 thead {
