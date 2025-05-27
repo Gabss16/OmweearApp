@@ -9,6 +9,6 @@ router.route("/")
 
 router.route("/:id")
 .put(suppliersControllers.putSuppliers)
-.delete(suppliersControllers.postSuppliers);
+.delete(suppliersControllers.deleteSuppliers);
 
 export default router;

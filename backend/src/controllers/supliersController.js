@@ -21,7 +21,7 @@ suppliersControllers.deleteSuppliers = async (req, res) => {
 suppliersControllers.putSuppliers = async (req, res) => {
     const { name, company, email, phone } = req.body;
 
-    await productsModel.findByIdAndUpdate(req.params.id, {
+    await suppliersModel.findByIdAndUpdate(req.params.id, {
         name, 
         company, 
         email, 

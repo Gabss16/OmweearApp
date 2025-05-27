@@ -1,53 +1,31 @@
-import React, { useState } from 'react';
-//import CustomTable from '../components/CustomTable';
-import './BrandsPage.css';
-//import brandImage from '../assets/brand.png';
+import React from "react";
+import CustomTable from "../components/customers/CustomTableC";
+import userDataCustomers from "../components/customers/hooks/userDataCustomers";
+import { Toaster } from "react-hot-toast";
 
-const BrandsPage = () => {
-  const [brandData, setBrandData] = useState([
-    { Name: 'Señoritas', Description: 'Para las señoritas' },
-    { Name: 'Damas', Description: 'Para las damas' },
-    { Name: 'Accesorios', Description: 'Son accesorios' },
-  ]);
-
-  const [formData, setFormData] = useState({ Name: '', Description: '' });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setBrandData([...brandData, formData]);
-    setFormData({ Name: '', Description: '' });
-  };
+const CustomersPage = () => {
+  const {
+    customers,
+    fetchData,
+    // Si deseas implementar edición y borrado, aquí irían los métodos updateCustomer y deleteCustomer
+  } = userDataCustomers();
 
   return (
-    <div className="brands-page">
-      <h1>
-        Add <span>CUSTOMERS</span>
-      </h1>
-      <div className="form-brand">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Name"
-            value={formData.Name}
-            onChange={(e) => setFormData({ ...formData, Name: e.target.value })}
-          />
-          <textarea
-            placeholder="Description"
-            value={formData.Description}
-            onChange={(e) => setFormData({ ...formData, Description: e.target.value })}
-          />
-          <button className="submit-btn" type="submit">
-            Add Brand
-          </button>
-        </form>
-       
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-5xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Gestión de Clientes</h1>
+
+        <CustomTable
+          columns={["Nombre", "Correo", "Teléfono", "Cumpleaños"]}
+          data={customers}
+          
+          headerTitle="Tabla de Clientes"
+          headerDescription="Lista de todos los clientes registrados en el sistema"
+        />
       </div>
-
-      
-     {/* <CustomTable columns={['Name', 'Description']} data={brandData} />*/}
-
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
 };
 
-export default BrandsPage;
+export default CustomersPage;

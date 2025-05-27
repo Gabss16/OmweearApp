@@ -9,6 +9,6 @@ router.route("/")
 
 router.route("/:id")
 .put(productsControllers.putProducts)
-.delete(productsControllers.postProducts);
+.delete(productsControllers.deleteProducts);
 
 export default router;
