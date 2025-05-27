@@ -19,9 +19,14 @@ customersControllers.createCustomers = async (req, res) => {
 }
     //DELETE
 customersControllers.deleteCustomers = async (req, res) => {
-    await customersControllers.findByIdAndDelete(req.params.id)
-    res.json({message:"Customer deleted"})
+    try {
+        await CustomersModel.findByIdAndDelete(req.params.id)
+        res.json({ message: "Customer deleted" })
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting customer", error })
+    }
 }
+
 
 //UPDATE
 customersControllers.updateCustomers = async (req, res) => {

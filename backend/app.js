@@ -10,6 +10,15 @@ import sales from "./src/routes/sales.js";
 import shoppingCart from "./src/routes/shoppingCart.js";
 import supliers from "./src/routes/suppliers.js";
 import wishlist from "./src/routes/wishlist.js";
+
+import registerEmployeesRoutes from "./src/routes/RegisterEmployees.js"
+import loginRoutes from "./src/routes/login.js"
+import logoutRoutes from "./src/routes/logout.js"
+import cookieParser from "cookie-parser";
+import registerCustomerRoutes from "./src/routes/RegisterCustomers.js"
+import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js"
+import { validateAuthToken } from "./src/middleware/validateAuthToken.js";
+
 import cors from "cors";
 
 
@@ -18,33 +27,38 @@ const app = express();
 
 app.use(
     cors({
-      origin: "*", // Dominio del cliente
+      origin: "http://localhost:5173", // Dominio del cliente
       credentials: true, // Permitir envío de cookies y credenciales
     })
   );
 
 app.use(express.json());
 
+//Que postman acepte guardar cookies
+app.use(cookieParser())
+
 
 //Empieza CRUD
 //1.definir rutas de funciones
+
 app.use ("/api/brands", brands);
 app.use ("/api/categories", categories);
 app.use ("/api/custumers", custumers);
 app.use ("/api/discounts", discounts);
 app.use ("/api/employees", employees);
 app.use ("/api/paymentMethod", paymentMethod);
+//app.use("/api/products", validateAuthToken (["admin", "employee"]), productRoutes)
 app.use ("/api/products", products);
 app.use ("/api/sales", sales);
 app.use ("/api/shoppingCart", shoppingCart);
 app.use ("/api/supliers", supliers);
 app.use ("/api/wishlist", wishlist);
 
+app.use("/api/login", loginRoutes);
+app.use("/api/logout", logoutRoutes);
+app.use("/api/registerCustomers", registerCustomerRoutes);
+//app.use("/api/registrerEmployees", validateAuthToken (["admin"]), registerEmployeesRoutes);
+app.use("/api/registerEmployees", registerEmployeesRoutes);
+app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 
-
-
-
-
-
-//antes de crud
 export default app;
