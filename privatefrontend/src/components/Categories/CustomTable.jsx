@@ -21,7 +21,7 @@ const CustomTable = ({
         <input type="text" placeholder="Search..." className="search-bar" />
         <div className="button-group">
           {onAdd && (
-            <button className="add-btn" onClick={onAdd}>
+            <button className="add-btn" type="button" onClick={onAdd}>
               Add
             </button>
           )}
@@ -42,20 +42,27 @@ const CustomTable = ({
               <td>{element.name}</td>
               <td>{element.description}</td>
               <td>
-              <button className="edit-btn" onClick={() => onEdit(element)}>
-  Edit
-</button>
+                <button
+                  className="edit-btn"
+                  type="button"
+                  onClick={() => onEdit(element)}
+                >
+                  Edit
+                </button>
                 <button
                   className="delete-btn"
+                  type="button"
                   onClick={() => {
                     if (
-                      window.confirm("¿Estás seguro de eliminar esta Categoria?")
+                      window.confirm(
+                        "¿Estás seguro de eliminar esta Producto?"
+                      )
                     ) {
                       onDelete(element._id);
                     }
                   }}
                 >
-                  Delete {element._id}
+                  Delete
                 </button>
               </td>
             </tr>

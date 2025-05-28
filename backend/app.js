@@ -12,7 +12,7 @@ import supliers from "./src/routes/suppliers.js";
 import wishlist from "./src/routes/wishlist.js";
 import cors from "cors";
 
-
+//app.use(cookieParser())
 const app = express();
 
 

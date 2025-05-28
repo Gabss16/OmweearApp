@@ -21,7 +21,7 @@ const CustomTable = ({
         <input type="text" placeholder="Search..." className="search-bar" />
         <div className="button-group">
           {onAdd && (
-            <button className="add-btn" onClick={onAdd}>
+            <button type="button" className="add-btn" onClick={onAdd}>
               Add
             </button>
           )}
@@ -41,22 +41,35 @@ const CustomTable = ({
             <tr key={rowIndex}>
               <td>{element.name}</td>
               <td>{element.description}</td>
+         <td>{element.price}</td>
+      <td>{element.stock}</td>
+ <td>{element.idBrand?.name}</td>
+      <td>{element.idCategory?.name}</td>
+      <td>{element.idSupplier?.name}</td>
+            <td>{element.sizesAvailable}</td>
+         <td>{element.image}</td>
+
+
+     
               <td>
-              <button className="edit-btn" onClick={() => onEdit(element)}>
-  Edit
-</button>
                 <button
-                  className="delete-btn"
-                  onClick={() => {
-                    if (
-                      window.confirm("¿Estás seguro de eliminar esta Producto?")
-                    ) {
-                      onDelete(element._id);
-                    }
-                  }}
+                  type="button"
+                  className="edit-btn"
+                  onClick={() => onEdit(element)}
                 >
-                  Delete {element._id}
+                  Edit
                 </button>
+              <button
+  type="button"
+  className="delete-btn"
+  onClick={() => {
+    if (window.confirm("¿Estás seguro de eliminar este producto?")) {
+      onDelete(element._id); // Solo esto
+    }
+  }}
+>
+  Delete
+</button>
               </td>
             </tr>
           ))}
