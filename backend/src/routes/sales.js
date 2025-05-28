@@ -11,8 +11,12 @@ const router = express.Router();
 router.route("/")
 .get(salesController.getSales)
 .post(salesController.createSale)
+
+router.put("/update-status/:id", salesController.updateStatus);
+
 router.route("/:id")
 .put(salesController.updateSale)
 .delete(salesController.deleteSale);
+
  
 export default router;
