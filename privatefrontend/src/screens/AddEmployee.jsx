@@ -1,81 +1,103 @@
+import React from "react";
+import RegisterEmployee from "../components/Employees/RegisterEmployee";
+import CustomTable from "../components/Employees/CustomTable";
+import useDataEmployees from "../components/Employees/hooks/useDataEmployees";
+import { Toaster } from "react-hot-toast";
 
-import Navbar from '../components/Navbar';
-import '../screens/AddEmployee.css';
+const Employees = () => {
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    phone,
+    setPhone,
+    dui,
+    setDui,
+    isss,
+    setIsss,
+    charge,
+    setCharge,
+    profilePhoto,
+    setProfilePhoto,
+    hireDate,
+    setHireDate,
+    birthday,
+    setBirthDay,
+    gender,
+    setGender,
+    employees,
+    handleSubmit,
+    deleteEmployee,
+    updateEmployees,  
+    handleUpdate,
+    id,
+  } = useDataEmployees();
 
-export default function AddEmployee() {
   return (
-    <div className="add-employee-container">
-     
-      <main className="add-employee-main">
-        <h1 className="add-employee-title"><span> Add Employee</span></h1>
-        
-        <section className="add-employee-form-section">
-          {/* Imagen */}
-          <div className="add-employee-photo">
-            <img
-              src="https://i.pinimg.com/736x/b4/f2/a3/b4f2a3e6e84314b8dd922cd7c3df0b07.jpg"
-              alt="employee preview"
-            />
-            <button>Add Photo</button>
-          </div>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Gestión de Empleados</h1>
 
-          {/* Formulario */}
-          <form className="add-employee-form">
-            <input type="text" placeholder="Name" />
-            <input type="Email" placeholder="Email" />
-            <input type="Password" placeholder="Password" />
-             <input type="Birthday" placeholder="Birthday" />
-            <input type="HireDate" placeholder="HireDate" />
-            <input type="DUI" placeholder="DUI" />
-            <input type="ISSS" placeholder="ISSS" />
-            <input type="Phone Number" placeholder="Phone Number" />
+        {/* Formulario de registro */}
+        <RegisterEmployee
+          id = {id}
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          phone={phone}
+          setPhone={setPhone}
+          dui={dui}
+          setDui={setDui}
+          isss={isss}
+          setIsss={setIsss}
+          charge={charge}
+          setCharge={setCharge}
+          profilePhoto={profilePhoto}
+          setProfilePhoto={setProfilePhoto}
+          hireDate={hireDate}
+          setHireDate={setHireDate}
+          birthday={birthday}
+          setBirthDay={setBirthDay}
+          gender={gender}
+          setGender={setGender}
+          handleSubmit={handleSubmit}
+          handleUpdate={handleUpdate}  
+          updateEmployees={updateEmployees}  
+        />
 
-        
-{/* Desplegable para "Charger" */}
-<select className="custom-select-dropdown" defaultValue="">
-  <option value="" disabled>Charger</option>
-  <option value="Manager">Manager</option>
-  <option value="shop assistant">shop assistant</option>
-</select>
+        {/* Tabla de marcas */}
+        <CustomTable
+          columns={["Nombre", "Email", "Contraseña", "Teléfono", "DUI", "N° ISSS", "Cargo", "Foto de perfíl","Fecha de contratación", "Fecha de Nacimiento", "Género", "Acciones"]}
+          data={employees.map((em) => ({
+            name: em.name,
+            email: em.email,
+            password: em.password,
+            phone: em.phone,
+            dui: em.dui,
+            isss: em.isss,
+            charge: em.charge,
+            profilePhoto: em.profilePhoto,
+            hireDate: em.hireDate,
+            birthday: em.birthday,
+            gender: em.gender,
+            _id: em._id
+          }))}
+          onDelete={deleteEmployee}
+          onEdit={updateEmployees}  // Aquí se pasa updateBrand cuando se va a editar
+          headerTitle="Tabla de Empleados"
+          headerDescription="Visualiza y gestiona tus empleados registrados"
+        />
+      </div>
 
-{/* Desplegable para "Gender" */}
-<select className="custom-select-dropdown" defaultValue="">
-  <option value="" disabled>Gender</option>
-  <option value="Female">Female</option>
-  <option value="Male">Male</option>
-  <option value="Others">Other</option>
-</select>
-           
-            <button type="submit" className="submit-btn">Agree </button>
-          </form>
-        </section>
-
-        {/* Tabla */}
-        <section className="add-employee-table-section">
-          <input type="text" placeholder="Search" className="search-input" />
-
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th><th>Email</th><th>Charge</th><th>Gender</th>
-                <th>Phone Number</th><th>Birthday</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>José Leví</td><td>levi@gmail.com</td><td>Admin</td><td>Male</td>
-                <td>7789-9030</td><td>16/02/2007</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div className="table-actions">
-            <button className="green">Add</button>
-            <button className="yellow">Edit</button>
-            <button className="red">Delete</button>
-          </div>
-        </section>
-      </main>
+      <Toaster toastOptions={{ duration: 1000 }} />
     </div>
   );
-}
+};
+
+export default Employees;

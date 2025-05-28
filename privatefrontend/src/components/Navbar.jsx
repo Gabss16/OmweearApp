@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
+
 import "../styles/Navbar.css";
 
 import {
@@ -10,6 +13,15 @@ import {
 const Navbar = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [showBrands, setShowBrands] = useState(false);
+
+  const { logOut, isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (logOut()) {
+      navigate("/");
+    }
+  };
 
   return (
     <div className="navbar">
@@ -41,9 +53,12 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="logout">
-        <FaSignOutAlt /> Log out
-      </div>
+      {isLoggedIn && (
+        <div className="logout" onClick={handleLogout}>
+          <FaSignOutAlt /> Log out
+        </div>
+      )}
+      
     </div>
   );
 };
