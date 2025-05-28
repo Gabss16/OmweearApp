@@ -21,7 +21,7 @@ import { validateAuthToken } from "./src/middleware/validateAuthToken.js";
 
 import cors from "cors";
 
-
+//app.use(cookieParser())
 const app = express();
 
 

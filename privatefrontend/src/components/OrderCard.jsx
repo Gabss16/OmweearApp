@@ -1,5 +1,5 @@
 import React from 'react';
-import './OrderCard.css';
+
 
 const OrderCard = ({
   userInitial,

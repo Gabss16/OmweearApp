@@ -1,7 +1,6 @@
 import React from "react";
-import "./CustomTable.css";
 
-const CustomTable = ({
+const CustomTableSuppliers = ({
   columns,
   data,
   onAdd,
@@ -21,7 +20,7 @@ const CustomTable = ({
         <input type="text" placeholder="Search..." className="search-bar" />
         <div className="button-group">
           {onAdd && (
-            <button className="add-btn" type="button" onClick={onAdd}>
+            <button type="button" className="add-btn" onClick={onAdd}>
               Add
             </button>
           )}
@@ -37,28 +36,30 @@ const CustomTable = ({
           </tr>
         </thead>
         <tbody>
-          {data.map((element, rowIndex) => (
+          {data.map((supplier, rowIndex) => (
             <tr key={rowIndex}>
-              <td>{element.name}</td>
-              <td>{element.description}</td>
+              <td>{supplier.name}</td>
+              <td>{supplier.company}</td>
+              <td>{supplier.email}</td>
+              <td>{supplier.phone}</td>
               <td>
                 <button
-                  className="edit-btn"
                   type="button"
-                  onClick={() => onEdit(element)}
+                  className="edit-btn"
+                  onClick={() => onEdit(supplier)}
                 >
                   Edit
                 </button>
                 <button
-                  className="delete-btn"
                   type="button"
+                  className="delete-btn"
                   onClick={() => {
                     if (
                       window.confirm(
-                        "¿Estás seguro de eliminar esta Producto?"
+                        "¿Estás seguro de eliminar este proveedor?"
                       )
                     ) {
-                      onDelete(element._id);
+                      onDelete(supplier._id);
                     }
                   }}
                 >
@@ -73,4 +74,4 @@ const CustomTable = ({
   );
 };
 
-export default CustomTable;
+export default CustomTableSuppliers;

@@ -40,7 +40,8 @@ idSupplier: {
     type: Schema.Types.ObjectId,
     ref: "Suppliers",
     require: true
-}
+},
+
 }, {
     timestamps: true,
     strict: false

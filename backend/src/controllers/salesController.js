@@ -46,4 +46,29 @@ salesController.updateSale = async (req, res) => {
 res.json({ message: "Sale uptated"});
 };
 
+// UPDATE SOLO ESTADO
+salesController.updateStatus = async (req, res) => {
+    try {
+      const { status } = req.body;
+  
+      const updatedSale = await salesModel.findByIdAndUpdate(
+        req.params.id,
+        { status },
+        { new: true }
+      );
+  
+      if (!updatedSale) {
+        return res.status(404).json({ message: "Venta no encontrada" });
+      }
+  
+      res.json({
+        message: "Estado de la venta actualizado correctamente",
+        sale: updatedSale
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Error al actualizar el estado", error });
+    }
+  };
+  
+
 export default salesController;
