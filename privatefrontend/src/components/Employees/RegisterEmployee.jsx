@@ -87,7 +87,7 @@ const RegisterEmployee = ({
     <div>
       <input
         id="dui"
-        type="text"
+        type="number"
         placeholder="DUI"
         value={dui || ""}
         onChange={(e) => setDui(e.target.value)}

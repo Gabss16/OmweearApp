@@ -18,9 +18,9 @@ const Profile = () => {
             <img src={Profilepic} alt="Foto de perfil" className= "profile-pic" />
 
           <div className="user-info">
-            <h4>Gabriela Michelle</h4>
-            <p>administrator</p>
-            <p className="email">gabanjs@gmail.com</p>
+            <h4>Omweear</h4>
+            <p>Administrator</p>
+            <p className="email">adminomweear@gmail.com</p>
           </div>
         </div>
 
@@ -35,7 +35,7 @@ const Profile = () => {
                   checked={theme === 'light'}
                   onChange={() => handleThemeChange('light')}
                 />
-                Light ☀️
+                Light 
               </label>
               <label>
                 <input
@@ -44,7 +44,7 @@ const Profile = () => {
                   checked={theme === 'dark'}
                   onChange={() => handleThemeChange('dark')}
                 />
-                Black 🌑
+                Black 
               </label>
             </div>
           </div>
@@ -59,10 +59,6 @@ const Profile = () => {
               <option value="English">English</option>
             </select>
           </div>
-
-          <button className="logout-btn" onClick={() => {/* Redirección aquí */}}>
-            Log Out
-          </button>
         </div>
       </div>
 
@@ -94,10 +90,10 @@ const Profile = () => {
           </div>
         </div>
 
-        <button className="submit-btn" disabled>
+        {/*<button className="submit-btn" disabled>
             Guardar cambios
-          {/* Botón solo estético */}
-        </button>
+        </button>*/}
+
       </div>
     </div>
   );

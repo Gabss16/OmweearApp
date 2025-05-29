@@ -2,27 +2,27 @@
     width: 250px;
     background-color: #0e1a24;
     color: white;
-    height: 100vh;
+    height: auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Raleway", sans-serif;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
     min-height: 100vh;
    }
    .navbar-top {
     z-index: 1;
    }
    .logo h2 {
-    font-size: 20px;
+    font-size: 40px;
     margin: 0;
    }
    .logo p {
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 4px;
-    color: #ccc;
+    color:rgb(253, 188, 188);
    }
    .nav-section h4 {
     margin-top: 20px;
@@ -77,8 +77,8 @@
    /* RESPONSIVO */
    @media (max-width: 768px) {
     .navbar {
-      width: 200px;
-      padding: 15px;
+      width: 100%;
+      padding: 20px;
     }
     .logo h2 {
       font-size: 18px;
@@ -89,7 +89,7 @@
     .nav-section li {
       font-size: 13px;
     }
-    .logout span {
-      font-size: 13px;
+    .logout {
+      font-size: 14px;
     }
-   }
+  }

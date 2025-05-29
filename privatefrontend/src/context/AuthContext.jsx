@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const Login = (email, password) => {
     if (!email || !password) {
@@ -44,13 +45,17 @@ export const AuthProvider = ({ children }) => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
+      setIsLoggedIn(true); 
     }
+    setLoading(false); 
   }, []);
 
+  if (loading) {
+    return null; 
+  }
+
   return (
-    <AuthContext.Provider
-      value={{ user, Login, logOut, isLoggedIn, setIsLoggedIn }}
-    >
+    <AuthContext.Provider value={{ user, Login, logOut, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

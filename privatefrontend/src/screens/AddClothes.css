@@ -1,52 +1,44 @@
-
 .add-clothes-container {
   display: flex;
   font-family: 'Inter', sans-serif;
+  flex-wrap: wrap; /* Asegura que los elementos se ajusten en pantallas pequeñas */
 }
-
+ 
 .add-clothes-main {
   flex: 1;
   padding: 2rem;
   background: #f9fbfa;
   min-height: 100vh;
 }
-
-.add-clothes-main {
-  flex: 1;
-  padding: 2rem;
-  background: #f9fafb;
-  min-height: 100vh; /
-  
-}
-
-body
-{
+ 
+body {
   margin-top: auto;
 }
+ 
 .add-clothes-title {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
 }
-
+ 
 .add-clothes-title span {
   color: #101b81;
 }
-
+ 
 .add-clothes-form-section {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 3rem;
 }
-
+ 
 .add-clothes-photo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-
+ 
 .add-clothes-photo img {
   width: 160px;
   height: 160px;
@@ -54,7 +46,7 @@ body
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
 }
-
+ 
 .add-clothes-photo button {
   padding: 0.5rem 1rem;
   background: #111827;
@@ -63,23 +55,15 @@ body
   border-radius: 0.375rem;
   cursor: pointer;
 }
-
+ 
 .add-clothes-form {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-
-.add-clothes-form input{
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #757575;
-  border-radius: 0.375rem;
-  font-size: 0.95rem;
-  color: rgb(0, 0, 0);
-  background-color: #f7f7f7;
-  }
-
+ 
+.add-clothes-form input,
 .add-clothes-form textarea {
   padding: 0.5rem 0.75rem;
   border: 1px solid #757575;
@@ -88,17 +72,17 @@ body
   color: rgb(0, 0, 0);
   background-color: #f7f7f7;
 }
-
+ 
 .full-width {
   grid-column: span 2;
 }
-
+ 
 .sizes {
   grid-column: span 2;
   display: flex;
   gap: 0.5rem;
 }
-
+ 
 .sizes button {
   border: 1px solid #d1d5db;
   padding: 0.4rem 1rem;
@@ -107,11 +91,11 @@ body
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
+ 
 .sizes button:hover {
   background: #000000;
 }
-
+ 
 .submit-btn {
   grid-column: span 2;
   padding: 0.6rem 1rem;
@@ -122,11 +106,11 @@ body
   font-weight: 500;
   cursor: pointer;
 }
-
+ 
 .add-clothes-table-section {
   margin-top: 2rem;
 }
-
+ 
 .search-input {
   width: 30%;
   padding: 0.5rem;
@@ -134,7 +118,7 @@ body
   border: 1px solid #a6a6a7;
   border-radius: 0.375rem;
 }
-
+ 
 table {
   width: 100%;
   border-collapse: collapse;
@@ -145,25 +129,25 @@ table {
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-
+ 
 th, td {
   padding: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
 }
-
+ 
 thead {
   background: #6761ca;
   text-align: left;
   font-weight: 500;
   color: white;
 }
-
+ 
 .table-actions {
   margin-top: 1rem;
   display: flex;
   gap: 0.5rem;
 }
-
+ 
 .table-actions button {
   padding: 0.4rem 1rem;
   border: none;
@@ -171,21 +155,21 @@ thead {
   color: rgb(248, 248, 248);
   cursor: pointer;
 }
-
+ 
 .green {
   background: #01101a;
 }
-
+ 
 .yellow {
   background: #01101a;
   color: black;
 }
-
+ 
 .red {
   background: #01101a;
 }
-
-.custom-select-dropdown{
+ 
+.custom-select-dropdown {
   border-radius: 0%;
   padding: 0.5rem 0.75rem;
   border: 1px solid #757575;
@@ -194,7 +178,83 @@ thead {
   color: rgb(126, 124, 124);
   background-color: #f7f7f7;
   font-family: 'Inter', sans-serif;
-   display: flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
+ 
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 1024px) {
+  .add-clothes-form {
+    grid-template-columns: 1fr;
+  }
+ 
+  .add-clothes-main {
+    padding: 1.5rem;
+  }
+ 
+  .add-clothes-title {
+    font-size: 1.75rem;
+  }
+ 
+  .search-input {
+    width: 50%;
+  }
+ 
+  table {
+    font-size: 0.85rem;
+  }
+ 
+  .sizes {
+    flex-direction: column;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .add-clothes-title {
+    font-size: 1.5rem;
+  }
+ 
+  .add-clothes-form input,
+  .add-clothes-form textarea {
+    font-size: 0.9rem;
+  }
+ 
+  .search-input {
+    width: 100%;
+  }
+ 
+  .add-clothes-form-section {
+    flex-direction: column;
+  }
+ 
+  .add-clothes-photo img {
+    width: 140px;
+    height: 140px;
+  }
+ 
+  .add-clothes-photo button {
+    padding: 0.4rem 0.8rem;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .add-clothes-title {
+    font-size: 1.25rem;
+  }
+ 
+  .add-clothes-photo img {
+    width: 120px;
+    height: 120px;
+  }
+ 
+  .submit-btn {
+    padding: 0.5rem 0.75rem;
+  }
+ 
+  .sizes button {
+    padding: 0.3rem 0.75rem;
+  }
+}
+ 
+ 

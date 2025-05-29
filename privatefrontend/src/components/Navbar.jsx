@@ -26,8 +26,8 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="logo">
-        <h2>OmWeear</h2>
-        <p>Management system</p>
+        <h2>Omweear</h2>
+        <p>Management System</p>
       </div>
 
       <div className="nav-section">
