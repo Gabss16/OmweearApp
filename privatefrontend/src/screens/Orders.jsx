@@ -11,7 +11,7 @@ const Orders = () => {
   const {
     sales,      // Usamos sales porque así se llama en el hook
     loading,
-    fetchSales, // si lo necesitas para refrescar
+    getProductDetails, // si lo necesitas para refrescar
     updateSaleStatus: markAsDelivered, // si tu función para marcar entrega se llama así
     // showOrderDetails, // si tienes esta función en tu hook
   } = userDataSales();
@@ -26,6 +26,7 @@ const Orders = () => {
             orders={sales}         
             loading={loading}
             onDelivered={markAsDelivered}
+            getProductDetails={getProductDetails} // si lo usas, descomenta
             // onDetails={showOrderDetails} // si lo usas, descomenta
           />
         </div>

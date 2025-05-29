@@ -3,12 +3,14 @@ import productsControllers from "../controllers/productController.js";
 
 const router = express.Router();
 
+// Rutas
 router.route("/")
-.get(productsControllers.getProducts)
-.post(productsControllers.postProducts)
+  .get(productsControllers.getAllProducts)
+  .post(productsControllers.postProducts);
 
 router.route("/:id")
-.put(productsControllers.putProducts)
-.delete(productsControllers.deleteProducts);
+  .get(productsControllers.getProductById)
+  .put(productsControllers.putProducts)
+  .delete(productsControllers.deleteProducts);
 
 export default router;

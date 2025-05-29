@@ -1,7 +1,7 @@
 import React from "react";
 import CardOrder from "./CardSale";
 
-const ListOrders = ({ orders, loading, markAsDelivered, showDetails }) => {
+const ListOrders = ({ orders, loading, markAsDelivered, showDetails, getProductDetails}) => {
   return (
     <>
       <h1 className="text-2xl font-bold underline text-center">
@@ -16,6 +16,7 @@ const ListOrders = ({ orders, loading, markAsDelivered, showDetails }) => {
             order={order}
             markAsDelivered={markAsDelivered}
             showDetails={showDetails}
+            getProductDetails={getProductDetails} // si lo necesitas
           />
         ))}
       </div>

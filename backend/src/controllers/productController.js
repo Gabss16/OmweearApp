@@ -3,7 +3,21 @@ import productsModel from "../models/Products.js";
 const productsControllers = {};
 
 // GET
-productsControllers.getProducts = async (req, res) => {
+/* viejo productsControllers.getProducts = async (req, res) => {
+  try {
+    const products = await productsModel.find()
+      .populate("idCategory")
+      .populate("idBrand")
+      .populate("idSupplier");
+
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error getting products" });
+  }
+};*/
+
+productsControllers.getAllProducts = async (req, res) => {
   try {
     const products = await productsModel.find()
       .populate("idCategory")
@@ -16,6 +30,34 @@ productsControllers.getProducts = async (req, res) => {
     res.status(500).json({ message: "Error getting products" });
   }
 };
+
+
+//obtener productos por id
+productsControllers.getProductById = async (req, res) => {
+  try {
+    const productId = req.params.id;
+
+    if (!productId) {
+      return res.status(400).json({ message: "Product ID is required" });
+    }
+
+    const product = await productsModel.findById(productId)
+      .populate("idCategory")
+      .populate("idBrand")
+      .populate("idSupplier");
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error getting product" });
+  }
+};
+
+
 
 // POST
 productsControllers.postProducts = async (req, res) => {

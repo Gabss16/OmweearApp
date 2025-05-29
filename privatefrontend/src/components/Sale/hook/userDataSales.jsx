@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const useSalesData = () => {
   const ApiSales = "http://localhost:4000/api/sales";
@@ -9,14 +9,60 @@ const useSalesData = () => {
   const [errorSale, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  const getProductDetails = async (productId) => {
+    try {
+      const res = await fetch(
+        `http://localhost:4000/api/products/${productId}`
+      );
+      if (!res.ok) throw new Error("No se pudo obtener el producto");
+      return await res.json();
+    } catch (error) {
+      console.error(`Error al obtener el producto ${productId}:`, error);
+      return null; // o un objeto vacío si prefieres
+    }
+  };
+
   // 👉 Obtener ventas
   const fetchSales = async () => {
     setLoading(true);
     try {
       const response = await fetch(ApiSales);
       if (!response.ok) throw new Error("Error al obtener las ventas");
+
       const data = await response.json();
-      setSales(data);
+      console.log("🛒 Ventas originales recibidas del backend:", data);
+
+      // Enriquecer productos con detalles
+      const enrichedSales = await Promise.all(
+        data.map(async (sale) => {
+          if (sale.shoppingCart_id?.products) {
+            const enrichedProducts = await Promise.all(
+              sale.shoppingCart_id.products.map(async (item) => {
+                console.log(
+                  "🔍 Obteniendo detalles para producto ID:",
+                  item.idProducts
+                );
+                const productDetails = await getProductDetails(item.idProducts);
+                console.log("Detalles obtenidos:", productDetails);
+
+                return {
+                  ...item,
+                  productDetails,
+                };
+              })
+            );
+            sale.shoppingCart_id.products = enrichedProducts;
+            console.log(
+              "🧾 Productos enriquecidos para la venta:",
+              enrichedProducts
+            );
+          }
+          return sale;
+        })
+      );
+
+      console.log("📦 Ventas enriquecidas completas:", enrichedSales);
+      setSales(enrichedSales);
     } catch (error) {
       console.error("Error al obtener ventas:", error);
       toast.error("Error al obtener ventas");
@@ -82,6 +128,7 @@ const useSalesData = () => {
     fetchSales,
     updateSale,
     updateSaleStatus,
+    getProductDetails,
   };
 };
 
