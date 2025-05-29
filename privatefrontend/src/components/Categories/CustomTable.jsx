@@ -1,14 +1,17 @@
 import React from "react";
 import "./CustomTable.css";
 
+
+//  Componente reutilizable para mostrar una tabla con acciones (Add, Edit, Delete)
+
 const CustomTable = ({
-  columns,
-  data,
+  columns, // Títulos de las columnas
+  data,  // Datos que se mostrarán en la tabla
   onAdd,
   onEdit,
   onDelete,
-  headerTitle,
-  headerDescription,
+  headerTitle, // Título principal de la tabla
+  headerDescription,// Descripción que aparece debajo del título
 }) => {
   return (
     <div className="table-container">
@@ -27,21 +30,24 @@ const CustomTable = ({
           )}
         </div>
       </div>
-
+  {/* Tabla que muestra los datos */}
       <table>
         <thead>
           <tr>
+             {/* Encabezados de las columnas */}
             {columns.map((col, idx) => (
               <th key={idx}>{col}</th>
             ))}
           </tr>
         </thead>
         <tbody>
+           {/* Filas con los datos */}
           {data.map((element, rowIndex) => (
             <tr key={rowIndex}>
               <td>{element.name}</td>
               <td>{element.description}</td>
               <td>
+                {/* Botón para editar, llama a onEdit con el elemento */}
                 <button
                   className="edit-btn"
                   type="button"
@@ -49,6 +55,7 @@ const CustomTable = ({
                 >
                   Edit
                 </button>
+                  {/* Botón para eliminar, con confirmación */}
                 <button
                   className="delete-btn"
                   type="button"
@@ -58,7 +65,7 @@ const CustomTable = ({
                         "¿Estás seguro de eliminar esta Producto?"
                       )
                     ) {
-                      onDelete(element._id);
+                      onDelete(element._id); // Llama a onDelete con el ID del elemento
                     }
                   }}
                 >

@@ -1,10 +1,13 @@
+// Importación de dependencias necesarias para el componente
 import React from "react";
-import CustomTable from "../components/Clothes/CustomTable";
-import useDataProducts from "../components/Clothes/hooks/userDataProducts";
-import RegisterProduct from "../components/Clothes/RegisterProducts"; 
-import { Toaster } from "react-hot-toast";
+import CustomTable from "../components/Clothes/CustomTable"; // Componente para mostrar los productos en una tabla personalizada
+import useDataProducts from "../components/Clothes/hooks/userDataProducts"; // Hook personalizado que maneja el estado y funciones CRUD para productos
+import RegisterProduct from "../components/Clothes/RegisterProducts"; // Componente de formulario para registrar o editar productos
+import { Toaster } from "react-hot-toast"; // Componente para mostrar notificaciones tipo "toast"
 
+// Componente principal que gestiona la vista de "Agregar Ropa"
 export default function AddClothes() {
+  // Se desestructura el hook para acceder al estado y funciones necesarias
   const {
     id,
     setId,
@@ -24,14 +27,15 @@ export default function AddClothes() {
     setSizesAvailable,
     idSupplier,
     setIdSupplier,
-    products,
-    handleSubmit,
-    handleUpdate,
-    deleteProduct,
-    updateProduct,
-    cleanData,
+    products, // Lista de productos disponibles
+    handleSubmit, // Función para registrar un nuevo producto
+    handleUpdate, // Función para actualizar un producto existente
+    deleteProduct, // Función para eliminar un producto
+    updateProduct, // Función para cargar los datos del producto seleccionado en el formulario
+    cleanData, // Función para limpiar el formulario
   } = useDataProducts();
 
+  // Definición de las columnas que se mostrarán en la tabla de productos
   const columns = [
     "Name",
     "Description",
@@ -45,14 +49,17 @@ export default function AddClothes() {
     "Actions",
   ];
 
+  // Estructura del componente que se renderiza en pantalla
   return (
-    <div className="add-clothes-container">
-      <Toaster />
-      <main className="add-clothes-main">
+    <div className="add-clothes-container"> {/* Contenedor principal */}
+      <Toaster /> {/* Componente para mostrar notificaciones en pantalla */}
+
+      <main className="add-clothes-main"> {/* Contenido principal */}
         <h1 className="add-clothes-title">
-          <span>Add Clothes</span>
+          <span>Add Clothes</span> {/* Título de la página */}
         </h1>
 
+        {/* Sección del formulario de registro de productos */}
         <section className="add-clothes-form-section">
           <RegisterProduct
             id={id}
@@ -72,20 +79,21 @@ export default function AddClothes() {
             setSizesAvailable={setSizesAvailable}
             idSupplier={idSupplier}
             setIdSupplier={setIdSupplier}
-            handleSubmit={handleSubmit}
-            handleUpdate={handleUpdate}
+            handleSubmit={handleSubmit} // Se llama al enviar el formulario para crear un producto
+            handleUpdate={handleUpdate} // Se llama al actualizar un producto ya existente
           />
         </section>
 
+        {/* Sección de la tabla de productos */}
         <section className="add-clothes-table-section">
           <CustomTable
-            columns={columns}
-            data={products}
-            onAdd={cleanData}
-            onEdit={updateProduct}
-            onDelete={deleteProduct}
-            headerTitle="Product List"
-            headerDescription="Lista de productos registrados en el sistema."
+            columns={columns} // Columnas definidas anteriormente
+            data={products} // Lista de productos para mostrar
+            onAdd={cleanData} // Función para limpiar el formulario cuando se quiere añadir uno nuevo
+            onEdit={updateProduct} // Se carga el producto seleccionado en el formulario
+            onDelete={deleteProduct} // Se elimina el producto seleccionado
+            headerTitle="Product List" // Título de la tabla
+            headerDescription="Lista de productos registrados en el sistema." // Descripción de la tabla
           />
         </section>
       </main>

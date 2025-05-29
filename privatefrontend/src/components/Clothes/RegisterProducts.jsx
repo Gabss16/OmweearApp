@@ -1,31 +1,25 @@
 import React from "react";
 
+//  Formulario reutilizable para registrar o actualizar productos
 const RegisterProduct = ({
-  id,
-  name,
-  setName,
-  description,
-  setDescription,
-  price,
-  setPrice,
-  stock,
-  setStock,
-  idCategory,
-  setIdCategory,
-  idBrand,
-  setIdBrand,
-  sizesAvailable,
-  setSizesAvailable,
-  idSupplier,
-  setIdSupplier,
-  handleSubmit,
-  handleUpdate,
+  id,                   // Si existe, el formulario actúa en modo edición
+  name, setName,        // Estado del nombre del producto
+  description, setDescription,
+  price, setPrice,
+  stock, setStock,
+  idCategory, setIdCategory,
+  idBrand, setIdBrand,
+  sizesAvailable, setSizesAvailable,
+  idSupplier, setIdSupplier,
+  handleSubmit,         // Función para registrar un nuevo producto
+  handleUpdate,         // Función para actualizar un producto existente
 }) => {
   return (
     <form
-      onSubmit={id ? handleUpdate : handleSubmit}
+      onSubmit={id ? handleUpdate : handleSubmit} //  Cambia la acción según si hay un ID
       className="space-y-4 mb-8"
     >
+      {/*  Campo: Nombre del producto */}
       <div>
         <label htmlFor="name" className="block text-gray-700 font-semibold mb-1">
           Nombre del Producto
@@ -41,6 +35,7 @@ const RegisterProduct = ({
         />
       </div>
 
+      {/*  Campo: Descripción */}
       <div>
         <label htmlFor="description" className="block text-gray-700 font-semibold mb-1">
           Descripción
@@ -55,7 +50,9 @@ const RegisterProduct = ({
         />
       </div>
 
+      {/*  Campos agrupados en dos columnas */}
       <div className="grid grid-cols-2 gap-4">
+        {/*  Campo: Precio */}
         <div>
           <label htmlFor="price" className="block text-gray-700 font-semibold mb-1">
             Precio
@@ -71,6 +68,7 @@ const RegisterProduct = ({
           />
         </div>
 
+        {/*  Campo: Stock */}
         <div>
           <label htmlFor="stock" className="block text-gray-700 font-semibold mb-1">
             Stock
@@ -86,6 +84,7 @@ const RegisterProduct = ({
           />
         </div>
 
+        {/* Campo: ID Categoría */}
         <div>
           <label htmlFor="idCategory" className="block text-gray-700 font-semibold mb-1">
             ID Categoría
@@ -101,6 +100,7 @@ const RegisterProduct = ({
           />
         </div>
 
+        {/*  Campo: ID Marca */}
         <div>
           <label htmlFor="idBrand" className="block text-gray-700 font-semibold mb-1">
             ID Marca
@@ -116,6 +116,7 @@ const RegisterProduct = ({
           />
         </div>
 
+        {/*  Campo: Tallas disponibles */}
         <div>
           <label htmlFor="sizesAvailable" className="block text-gray-700 font-semibold mb-1">
             Tallas disponibles
@@ -131,6 +132,7 @@ const RegisterProduct = ({
           />
         </div>
 
+        {/*  Campo: ID Proveedor */}
         <div>
           <label htmlFor="idSupplier" className="block text-gray-700 font-semibold mb-1">
             ID Proveedor
@@ -147,6 +149,7 @@ const RegisterProduct = ({
         </div>
       </div>
 
+      {/*  Botón para enviar (Registrar o Actualizar) */}
       <button
         type="submit"
         className={`${

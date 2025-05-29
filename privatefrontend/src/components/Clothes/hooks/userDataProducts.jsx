@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
+//  Hook personalizado para manejar productos (crear, leer, actualizar, eliminar)
+
 const useDataProducts = () => {
   const ApiProducts = "http://localhost:4000/api/products";
 
+
+    //  Estados para los campos del formulario
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +22,7 @@ const useDataProducts = () => {
   const [errorProduct, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+    //  Función para limpiar los datos del formulario
   const cleanData = () => {
     setId("");
     setName("");
@@ -32,22 +37,26 @@ const useDataProducts = () => {
     setSuccess(null);
   };
 
+    //  Función para obtener todos los productos
+
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await fetch(ApiProducts);
       if (!response.ok) throw new Error("Error al obtener los productos");
       const data = await response.json();
-      setProducts(data);
+      setProducts(data); //  Guardamos los productos en el estado
     } catch (error) {
       console.error("Error al obtener productos:", error);
     } finally {
-      setLoading(false);
+      setLoading(false); //  Finaliza la carga
     }
   };
-
+//  Función para registrar un nuevo producto
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+        //  Validación de campos obligatorios
     if (!name || !description || !price || !stock || !idCategory || !idBrand || !sizesAvailable || !idSupplier) {
       toast.error("Todos los campos son obligatorios");
       return;
@@ -77,14 +86,15 @@ const useDataProducts = () => {
 
       await response.json();
       toast.success("Producto registrado correctamente");
-      cleanData();
-      fetchData();
+      cleanData(); //  Limpia el formulario
+      fetchData(); //  Refresca los datos
     } catch (error) {
       console.error(error);
       toast.error("Ocurrió un error al registrar el producto");
     }
   };
 
+  // Función para eliminar un producto
   const deleteProduct = async (id) => {
   try {
     const response = await fetch(`${ApiProducts}/${id}`, {
@@ -94,14 +104,15 @@ const useDataProducts = () => {
     if (!response.ok) throw new Error("Error al eliminar el producto");
 
     toast.success("Producto eliminado");
-    await fetchData();   
-    cleanData();         
+    await fetchData();   //  Refresca la lista de productos
+    cleanData();         //  Limpia el formulario si el producto estaba en edición
   } catch (error) {
     console.error("Error al eliminar el producto:", error);
     toast.error("Ocurrió un error al eliminar el producto");
   }
 };
 
+  //  Cargar datos de un producto en el formulario para editarlo
 
   const updateProduct = (product) => {
     setId(product._id);
@@ -109,7 +120,7 @@ const useDataProducts = () => {
     setDescription(product.description);
     setPrice(product.price);
     setStock(product.stock);
-    setIdCategory(product.idCategory?._id || "");
+    setIdCategory(product.idCategory?._id || ""); //  Maneja referencias opcionales
     setIdBrand(product.idBrand?._id || "");
     setSizesAvailable(product.sizesAvailable);
     setIdSupplier(product.idSupplier?._id || "");
@@ -117,6 +128,7 @@ const useDataProducts = () => {
     setSuccess(null);
   };
 
+  //  Función para guardar los cambios de un producto editado
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -143,18 +155,20 @@ const useDataProducts = () => {
       if (!response.ok) throw new Error("Error al actualizar el producto");
 
       toast.success("Producto actualizado correctamente");
-      cleanData();
-      fetchData();
+      cleanData(); //  Limpia el formulario
+      fetchData(); //  Refresca los productos
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
       toast.error("Ocurrió un error al actualizar el producto");
     }
   };
 
+    //  Se ejecuta al montar el componente, carga los productos existentes
   useEffect(() => {
     fetchData();
   }, []);
 
+  //  Retorna funciones y estados para usarlos en el componente
   return {
     id,
     setId,

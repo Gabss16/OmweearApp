@@ -1,19 +1,25 @@
 import React from "react";
 
+// 👉 Componente para registrar o actualizar una categoría
+
 const RegisterCategory = ({
-  id,
-  name,
-  setName,
-  description,
-  setDescription,
-  handleSubmit,
-  handleUpdate,
+   id, // ID de la categoría (si existe, estamos en modo edición)
+  name, // Nombre de la categoría
+  setName, // Función para actualizar el nombre
+  description, // Descripción de la categoría
+  setDescription, // Función para actualizar la descripción
+  handleSubmit, // Función para registrar una nueva categoría
+  handleUpdate, // Función para actualizar una categoría existente
 }) => {
   return (
+        //  Al hacer submit, se decide si registrar o actualizar dependiendo si hay ID
+
     <form
       onSubmit={id ? handleUpdate : handleSubmit}
       className="space-y-4 mb-8"
     >
+            {/* Campo para el nombre de la categoría */}
+
       <div>
         <label htmlFor="name" className="block text-gray-700 font-semibold mb-1">
           Nombre de la Categoría
@@ -23,9 +29,9 @@ const RegisterCategory = ({
           type="text"
           placeholder="Nombre"
           value={name || ""}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)} // 👉 Actualiza el nombre al escribir
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-          required
+          required // 👉 Campo obligatorio
         />
       </div>
 
@@ -45,6 +51,7 @@ const RegisterCategory = ({
           required
         />
       </div>
+      {/* Botón que cambia de texto y color dependiendo si se edita o registra */}
 
       <button
         type="submit"

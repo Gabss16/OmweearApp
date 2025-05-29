@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 const userDataCategories = () => {
   const ApiCategories = "http://localhost:4000/api/categories";
 
+   //  Estados para guardar los datos del formulario
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -12,7 +13,7 @@ const userDataCategories = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  // 👉 Limpiar los datos del formulario
+  //  Limpiar los datos del formulario
   const cleanData = () => {
     setName("");
     setDescription("");
@@ -21,10 +22,11 @@ const userDataCategories = () => {
     setSuccess(null);
   };
 
-  // 👉 Registrar nueva categoría
+  //  Registrar nueva categoría
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+     // Validar que todos los campos estén completos
     if (!name || !description) {
       setError("Todos los campos son obligatorios");
       toast.error("Todos los campos son obligatorios");
@@ -33,7 +35,7 @@ const userDataCategories = () => {
 
     try {
       const newCategory = { name, description };
-
+     // Enviar la categoría al servidor
       const response = await fetch(ApiCategories, {
         method: "POST",
         headers: {
@@ -41,11 +43,13 @@ const userDataCategories = () => {
         },
         body: JSON.stringify(newCategory),
       });
+      // Si hay error en la respuesta
 
       if (!response.ok) {
         throw new Error("Hubo un error al registrar la categoría");
       }
 
+      // Limpiar formulario y recargar lista
       await response.json();
       toast.success("Categoría registrada");
       setSuccess("Categoría registrada correctamente");
@@ -60,7 +64,7 @@ const userDataCategories = () => {
     }
   };
 
-  // 👉 Obtener categorías
+  // Obtener categorías del servidor
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -74,12 +78,12 @@ const userDataCategories = () => {
       setLoading(false);
     }
   };
-
+//  Obtener categorías automáticamente al cargar la pantalla
   useEffect(() => {
     fetchData();
   }, []);
 
-  // 👉 Eliminar categoría
+  //  Eliminar categoría
   const deleteCategory = async (id) => {
     try {
       const response = await fetch(`${ApiCategories}/${id}`, {
@@ -90,6 +94,7 @@ const userDataCategories = () => {
         throw new Error("Error al eliminar la categoría");
       }
 
+      // Recargar lista después de eliminar
       toast.success("Categoría eliminada");
       fetchData();
     } catch (error) {
@@ -98,7 +103,7 @@ const userDataCategories = () => {
     }
   };
 
-  // 👉 Llenar formulario para edición
+  //  Cargar datos de una categoría en el formulario para editar
   const updateCategory = (dataCategory) => {
     setId(dataCategory._id);
     setName(dataCategory.name);
@@ -107,7 +112,7 @@ const userDataCategories = () => {
     setSuccess(null);
   };
 
-  // 👉 Guardar cambios de edición
+  //  Guardar cambios en una categoría existente
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -128,6 +133,9 @@ const userDataCategories = () => {
 
       toast.success("Categoría actualizada");
       setSuccess("Categoría actualizada correctamente");
+
+      
+      // Limpiar formulario y recargar lista
       cleanData();
       fetchData();
     } catch (error) {
@@ -138,7 +146,7 @@ const userDataCategories = () => {
       setLoading(false);
     }
   };
-
+  // Lo que se retorna para poder usarlo en otros componentes
   return {
     id,
     setId,
