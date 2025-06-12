@@ -6,8 +6,8 @@ password: Contraseña del cliente
 phone: Número de teléfono del cliente
 birthday: Fecha de cumpleaños del cliente (Para aplicar descuento)
 profilePhoto: Foto del cliente
-
  */
+
   import {Schema} from "mongoose"
   import {model} from "mongoose"
   
