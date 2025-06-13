@@ -5,7 +5,7 @@ dotenv.config();
 export const config ={
 
     db: {
-        URI: process.env.BD_URI 
+        URI: process.env.DB_URI || "mongodb+srv://gbss16:g123@cluster2a.0uchy.mongodb.net/dbOmweear?retryWrites=true&w=majority&appName=Cluster2A",
     },
     server: {
         port: process.env.PORT || 4000,

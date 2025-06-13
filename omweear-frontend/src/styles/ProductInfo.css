@@ -1,51 +1,34 @@
+/* src/styles/ProductInfo.css */
 
-/* ESTILOS GLOBALES (fuera de cualquier media query) */
-html, body, #root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
-    box-sizing: border-box;
-  }
-  
-  .page-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 2rem;
-  }
-  
-  
-  .product-page-wrapper {
-    
-    flex: 1;
-  }
-  
-  /* PRODUCT CONTAINER */
+.product-page-wrapper {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Secciones izquierda (imagen + tallas) y derecha (info + similares) */
+.product-left, .product-right {
+  flex: 1 1 48%;
+}
+
+/* Mobile: Stack verticalmente */
+@media (max-width: 768px) {
   .product-container {
-    display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
   }
-  
-  
-  @media (min-width: 768px) {
-    .product-container {
-      flex-direction: row;
-      gap: 40px;
-      align-items: flex-start;
-    }
+
+  .product-left, .product-right {
+    flex: 1 1 100%;
   }
-  
+}
+
+/* Optional: Espacio entre elementos dentro de product-left/right */
+.product-left > *, .product-right > * {
+  margin-bottom: 1rem;
+}

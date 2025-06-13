@@ -39,28 +39,26 @@ const Header = () => {
     },
   ];
 
-
   return (
     <>
       {/* Banner principal */}
-      <div className="header">
+      <div className="header responsive-header">
         <div className="header-text">
           <h1>OmWeear</h1>
           <p>Ríndete sobre your clothes</p>
         </div>
-
         <div className="header-image-container">
           <img src={modelImage} alt="model" className="header-img" />
         </div>
       </div>
 
-      {/* CONTENIDO después del banner */}
       <div className="home-container">
+        {/* Sección DISCOVER */}
         <section className="discover-section">
           <h2>Discover Shop Items</h2>
           <p>Diseños funcionales con materiales sostenibles para tus prácticas diarias</p>
           
-          <div className="categories">
+          <div className="categories responsive-categories">
             <CategoryButton label="Tops" />
             <CategoryButton label="Leggins" />
             <CategoryButton label="Bodies" />
@@ -69,9 +67,9 @@ const Header = () => {
             <CategoryButton label="Weight" />
           </div>
 
-          <div className="products">
+          <div className="products responsive-products">
             <ProductCard 
-              image= {img1} 
+              image={img1} 
               title="MATCHING SETS"
               description="Diseños funcionales con materiales sostenibles"
             />
@@ -96,7 +94,7 @@ const Header = () => {
         {/* Sección NEW ARRIVALS */}
         <section className="new-arrivals-section">
           <h2 className="section-title">NEW ARRIVALS</h2>
-          <div className="new-arrivals-grid">
+          <div className="new-arrivals-grid responsive-arrivals">
             {newArrivals.map((item, index) => (
               <div key={index} className="new-arrival-card">
                 <img src={item.image} alt="arrival item" className="new-arrival-img" />
@@ -113,7 +111,7 @@ const Header = () => {
         </section>
 
         {/* Sección PROMO */}
-        <section className="promo-section">
+        <section className="promo-section responsive-promo">
           <div className="promo-text">
             <h3>¡Lleva tu experiencia al siguiente nivel!</h3>
             <p>

@@ -1,16 +1,30 @@
-// components/SidebarMenu.jsx
-import React from 'react';
+import React, { useState } from 'react';
+import '../styles/SidebarMenu.css'; // asegúrate de tener estilos
+
+const categories = [
+  'All Category',
+  'Leggings',
+  'Tops',
+  'High Waist',
+  'Scrunch',
+  'Accesories',
+  'Complemets',
+];
 
 const SidebarMenu = () => {
+  const [activeCategory, setActiveCategory] = useState('All Category');
+
   return (
     <aside className="sidebar-menu">
-      <button className="category-btn active">All Category</button>
-      <button className="category-btn">Leggings</button>
-      <button className="category-btn">Tops</button>
-      <button className="category-btn">High Waist</button>
-      <button className="category-btn">Scrunch</button>
-      <button className="category-btn">Accesories</button>
-      <button className="category-btn">Complemets</button>
+      {categories.map((category) => (
+        <button
+          key={category}
+          className={`category-btn ${activeCategory === category ? 'active' : ''}`}
+          onClick={() => setActiveCategory(category)}
+        >
+          {category}
+        </button>
+      ))}
     </aside>
   );
 };

@@ -1,0 +1,32 @@
+/* styles/SidebarMenu.css */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    background-color: #000000; /* celeste suave */
+    border-radius: 10px;
+    width: 200px;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+  
+  .category-btn:hover {
+    background-color: #4d4d4d;
+  }
+  
+  .category-btn.active {
+    background-color: #ff9abbda; /* rosa */
+    color: white;
+    font-weight: bold;
+  }
+  
