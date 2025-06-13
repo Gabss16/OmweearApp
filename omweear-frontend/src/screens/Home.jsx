@@ -2,7 +2,7 @@
 import React from 'react';
 
 import '../styles/Home.css';
-import modelImage from '../images/header1.png'; 
+import modelImage from '../images/hd.png'; 
 import img1 from '../images/img1.jpg'; 
 import img2 from '../images/img2.jpg'; 
 import img3 from '../images/img3.jpg'; 
@@ -45,7 +45,6 @@ const Header = () => {
       <div className="header responsive-header">
         <div className="header-text">
           <h1>OmWeear</h1>
-          <p>Ríndete sobre your clothes</p>
         </div>
         <div className="header-image-container">
           <img src={modelImage} alt="model" className="header-img" />

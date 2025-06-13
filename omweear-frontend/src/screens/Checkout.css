@@ -5,6 +5,7 @@
   .checkout-container {
     padding: 30px;
     font-family: 'Raleway', sans-serif;
+    margin-top: 78px; 
   }
   
   .checkout-header {
@@ -99,7 +100,7 @@
   }
   
   .save-continue-button {
-    background-color: #6169d4bb;
+    background-color: #000000bb;
     color: white;
     padding: 14px 20px; /* Aumenté el padding del botón */
     border: none;
@@ -112,7 +113,7 @@
   }
   
   .save-continue-button:hover {
-    background-color: #333;
+    background-color: #d32d6c;
   }
   
   /* Opciones de envío */

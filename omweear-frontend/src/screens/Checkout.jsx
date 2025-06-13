@@ -44,8 +44,6 @@ function Checkout() {
                   <input type="text" id="postalCode" name="postalCode" />
                 </div>
                 <div className="form-group city-region">
-                  <label htmlFor="cityRegion">Enter ZIP/Postal Code to see City and State/Region</label>
-                  <input type="text" id="cityRegion" name="cityRegion" />
                 </div>
               </div>
               <button type="submit" className="save-continue-button">Save & Continue</button>
@@ -99,15 +97,11 @@ function Checkout() {
           <div className="summary-totals">
             <div className="total-line">
               <span>Estimated Total</span>
-              <span className="total-amount">$0.0</span>
+              <span className="total-amount">$200.00</span>
             </div>
             <p className="includes-tax">Includes applicable taxes</p>
           </div>
-          <div className="promo-code">
-            <label htmlFor="promoCode">Have a promo code?</label>
-            <input type="text" id="promoCode" name="promoCode" placeholder="Enter code" />
-            <button className="apply-button">APPLY</button>
-          </div>
+         
           <button className="place-order-button">SECURE CHECKOUT</button>
           <div className="accepted-payments">
             <p>Accepted Payment Methods:</p>

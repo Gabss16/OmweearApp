@@ -1,61 +1,42 @@
-import React from "react";
-import { Toaster } from "react-hot-toast";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import RegisterCustomers from "../components/Register/RegisterCustomers";
-import useDataRegister from "../components/Register/hooks/useDataRegister";
+import "./Register.css";
+import Pilimg from "../images/Pil.png";
 
 const Register = () => {
-  
-  const {
-    name,
-    setName,
-    lastname,
-    setLastname,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    phone,
-    setPhone,
-    birthday,
-    setBirthday,
-    profilePhoto,
-    setProfilePhoto,
-    errorCustomer,
-    loading,
-    handleSubmit,
-  } = useDataRegister();
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
-        <RegisterCustomers
-          name={name}
-          setName={setName}
-          lastname={lastname}
-          setLastname={setLastname}
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          phone={phone}
-          setPhone={setPhone}
-          birthday={birthday}
-          setBirthday={setBirthday}
-          profilePhoto={profilePhoto}
-          setProfilePhoto={setProfilePhoto}
-          handleSubmit={handleSubmit}
-          loading={loading}
-        />
-        {errorCustomer && (
-          <p className="text-red-600 mt-2 text-center">{errorCustomer}</p>
-        )}
+    <div className="register-container">
+      <div className="register-left">
+        <h1>Registrarme</h1>
+        <form className="register-form">
+        <form className="register-form" onSubmit={handleRegister}>
+          <input type="text" placeholder="Nombre" />
+          <input type="text" placeholder="Apellido" />
+          <input type="email" placeholder="Correo electrónico" />
+          <div className="password-wrapper">
+            <input type="password" placeholder="Contraseña" />
+          </div>
+          <button className="register-btn">Registrarme</button>
+          <button type="submit" className="register-btn">Registrarme</button>
+        </form>
+        </form>
+        <p className="login-link">¿Ya tienes una cuenta? <a href="#">Iniciar Sesión</a> </p>
+        <p className="login-link">¿Ya tienes una cuenta? <Link to="/">Iniciar Sesión</Link></p>
       </div>
-      <Toaster toastOptions={{ duration: 1500 }} />
+      <div className="register-right">
+        <h1>Omweear</h1>
+        <p>Eleva tu práctica, Eleva tu estilo</p>
+        <img src={Pilimg} alt=""/>
+      </div>
     </div>
   );
 };
 
 export default Register;
-
