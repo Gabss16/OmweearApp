@@ -1,130 +1,88 @@
-import React, { useState, useEffect } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const useDataRegister = () => {
+  const ApiRegisterCustomer = "http://localhost:4000/api/customers";
 
-  const ApiRegisterCustomer = "http://localhost:4000/api/registerCustomers";
-
-  const [id, setId] = useState("");
   const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [birthday, setBirthDay] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [profilePhoto, setProfilePhoto] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState(null); // archivo
   const [errorCustomer, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [customers, setCustomers] = useState([]);
-
-  /*
-name: Nombre del cliente
-email: Correo electrónico del cliente
-password: Contraseña del cliente
-phone: Número de teléfono del cliente
-birthday: Fecha de cumpleaños del cliente (Para aplicar descuento)
-lastname
-profilePhoto: Foto del cliente
- */
-
-  // Limpiar los datos del formulario
 
   const cleanData = () => {
     setName("");
+    setLastname("");
     setEmail("");
     setPassword("");
     setPhone("");
-    setBirthDay("");
-    setLastname("");
-    setProfilePhoto("");
-    setId("");
+    setBirthday("");
+    setProfilePhoto(null);
     setError(null);
-    setSuccess(null);
   };
-
-  // Registrar nuevo cliente
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-        
-        !name     || !email        ||
-        !password || !phone        ||
-        !birthday || !lastname     ||
-        !profilePhoto 
-
-    ) {
+    if (!name || !lastname || !email || !password || !phone || !birthday) {
       setError("Todos los campos son obligatorios");
       toast.error("Todos los campos son obligatorios");
       return;
     }
 
+    // Si quieres que la foto sea obligatoria, descomenta esta parte:
+    /*
+    if (!profilePhoto) {
+      setError("La foto de perfil es obligatoria");
+      toast.error("La foto de perfil es obligatoria");
+      return;
+    }
+    */
+
+    setLoading(true);
     try {
+      // Usamos FormData para enviar archivo
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("lastname", lastname);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("phone", phone);
+      formData.append("birthday", birthday);
 
-      const newCustomer = { 
-
-        name, email, password, 
-        phone, birthday, lastname,
-        profilePhoto
-         
-    };
-
-      console.log(newCustomer, "datos nuevos del cliente");
+      if (profilePhoto) {
+        formData.append("profilePhoto", profilePhoto);
+      }
 
       const response = await fetch(ApiRegisterCustomer, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCustomer),
+        body: formData,
       });
 
       if (!response.ok) {
-        throw new Error("Hubo un error al registrar el cliente");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error al registrar cliente");
       }
 
-      const data = await response.json();
-      toast.success("Cliente registrado");
-      setSuccess("Cliente registrado correctamente");
-      cleanData(); 
-      fetchData();
+      toast.success("Cliente registrado correctamente");
+      cleanData();
     } catch (error) {
       setError(error.message);
-      console.error("Error al registrar el Cliente:", error);
-      toast.error("Ocurrió un error al registrar el Cliente");
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
-
-  // Obtener Empleados
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(ApiRegisterCustomer);
-      if (!response.ok) throw new Error("Error al obtener los Clientes");
-      const data = await response.json();
-      setCustomers(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
 
   return {
-    id,
-    setId,
     name,
     setName,
+    lastname,
+    setLastname,
     email,
     setEmail,
     password,
@@ -132,22 +90,12 @@ profilePhoto: Foto del cliente
     phone,
     setPhone,
     birthday,
-    setBirthDay,
-    lastname,
-    setLastname,
+    setBirthday,
     profilePhoto,
     setProfilePhoto,
     errorCustomer,
-    setError,
-    success,
-    setSuccess,
     loading,
-    setLoading,
-    customers,
-    setCustomers,
-    cleanData, 
     handleSubmit,
-    fetchData,
   };
 };
 
