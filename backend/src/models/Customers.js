@@ -23,12 +23,10 @@ profilePhoto: Foto del cliente
       password:{
             type:String,
             require: true,
-            min:8
         },
       phone:{
             type: Number,
             require: true,
-            min: 8
         }, 
       birthday:{
             type: Date,
