@@ -145,7 +145,8 @@
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
+  color: black;
 }
 
 .arrival-img {

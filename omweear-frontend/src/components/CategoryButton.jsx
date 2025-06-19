@@ -1,12 +1,13 @@
-
-import React from 'react';
-import '../styles/CategoryButton.css';
+// src/components/CategoryButton.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/CategoryButton.css"; // si usas estilos
 
 const CategoryButton = ({ label }) => {
   return (
-    <button className="category-button">
+    <Link to="/shop" className="category-button">
       {label}
-    </button>
+    </Link>
   );
 };
 

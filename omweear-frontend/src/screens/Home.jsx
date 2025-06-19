@@ -102,8 +102,8 @@ const Header = () => {
                     <span key={idx} className="color-dot" style={{ backgroundColor: color }}></span>
                   ))}
                 </div>
-                <p className="arrival-price">${item.price.toFixed(2)}</p>
-                <button className="arrival-add-btn">Add</button>
+                <h2 className="arrival-price">${item.price.toFixed(2)}</h2>
+               
               </div>
             ))}
           </div>
