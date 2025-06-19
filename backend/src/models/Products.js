@@ -1,62 +1,47 @@
-import { Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 const productsSchema = new Schema({
-name: {
+  name: {
     type: String,
-    require: true
-},
-description: {
+    required: true, // corregido de `require` a `required`
+  },
+  description: {
     type: String,
-    require: true
-},
-price: {
+    required: true,
+  },
+  price: {
     type: Number,
-    require: true
-},
-stock: {
+    required: true,
+  },
+  stock: {
     type: Number,
-    require: true
-},
-idCategory: {
+    required: true,
+  },
+  idCategory: {
     type: Schema.Types.ObjectId,
     ref: "Categories",
-    require: true
-},
-idBrand: {
+    required: true,
+  },
+  idBrand: {
     type: Schema.Types.ObjectId,
     ref: "Brands",
-    require: true
-},
-images: {
+    required: true,
+  },
+  imagen: {
     type: String,
-    require: false
-},
-
-sizesAvailable: {
-    type: String,
-    require: true
-},
-idSupplier: {
+  },
+  sizesAvailable: {
+    type: [String], // Ahora es un arreglo de strings
+    required: true,
+  },
+  idSupplier: {
     type: Schema.Types.ObjectId,
     ref: "Suppliers",
-    require: true
-},
-
+    required: true,
+  },
 }, {
-    timestamps: true,
-    strict: false
-})
+  timestamps: true,
+  strict: false,
+});
 
-export default model("Products", productsSchema)
-
-/*
-name: Nombre del producto
-description: Breve descripción del producto
-price: Precio del producto
-stock: Cantidad de productos disponibles
-idCategory: Id de la categoría del producto
-idBrand: Id de la marca del producto
-images: Vista previa del producto y sus estilos disponibles
-sizesAvailable: Tallas disponibles del producto
-supplierId: Id del proveedor
-*/
+export default model("Products", productsSchema);

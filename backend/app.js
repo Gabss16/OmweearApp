@@ -17,6 +17,21 @@ import cookieParser from "cookie-parser";
 import registerCustomerRoutes from "./src/routes/RegisterCustomers.js"
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js"
 import { validateAuthToken } from "./src/middleware/validateAuthToken.js";
+import multer from "multer";
+import { upload } from "../middlewares/multer.js";
+import productsControllers from "../controllers/productsControllers.js";
+
+router.post("/products", upload.single("imagen"), productsControllers.postProducts);
+router.put("/products/:id", upload.single("imagen"), productsControllers.putProducts);
+
+const storage = multer.diskStorage({
+  destination: "uploads/", // carpeta donde se guardan
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+export const upload = multer({ storage });
 
 import cors from "cors";
 
