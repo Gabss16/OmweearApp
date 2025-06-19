@@ -1,5 +1,4 @@
-import React from "react";
-import "./stiloE.css"
+import React, { useState, useEffect } from "react";
 
 const RegisterCustomer = ({
 
@@ -15,7 +14,6 @@ const RegisterCustomer = ({
   setBirthDay,
   lastname,
   setLastname,
-  profilePhoto,
   setProfilePhoto,
   handleSubmit,
 

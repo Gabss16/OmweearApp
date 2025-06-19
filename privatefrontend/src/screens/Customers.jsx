@@ -7,7 +7,6 @@ const CustomersPage = () => {
   const {
     customers,
     fetchData,
-    // Si deseas implementar edición y borrado, aquí irían los métodos updateCustomer y deleteCustomer
   } = userDataCustomers();
 
   return (

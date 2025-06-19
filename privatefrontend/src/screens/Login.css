@@ -105,6 +105,8 @@ body, html {
     font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
+    z-index: 3;
+    font-family: "Raleway", sans-serif;
   }
   
   

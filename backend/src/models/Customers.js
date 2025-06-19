@@ -40,7 +40,7 @@ profilePhoto: Foto del cliente
        type: String,
        require: false
       }
-  
+      
   },{
       timestamps : true,
       strict: false

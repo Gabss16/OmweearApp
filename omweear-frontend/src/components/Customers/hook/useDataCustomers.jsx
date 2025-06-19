@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const useDataCustomers = () => {
-
   const ApiCustomers = "http://localhost:4000/api/registerCustomers";
 
   const [id, setId] = useState("");
@@ -18,8 +17,6 @@ const useDataCustomers = () => {
   const [loading, setLoading] = useState(false);
   const [customers, setCustomers] = useState([]);
 
-  // Limpiar los datos del formulario
-
   const cleanData = () => {
     setName("");
     setEmail("");
@@ -27,84 +24,38 @@ const useDataCustomers = () => {
     setPhone("");
     setBirthDay("");
     setLastname("");
-    setProfilePhoto("");
+    setProfilePhoto(null);
     setId("");
     setError(null);
     setSuccess(null);
   };
 
-  // Registrar nueva marca
+  const createCustomer = async (formData) => {
+  setLoading(true);
+  try {
+    const response = await fetch(ApiCustomers, {
+      method: "POST",
+      // NO agregar headers si usas FormData
+      body: formData,
+    });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (!response.ok) throw new Error("Hubo un error al registrar el cliente");
 
-    if (!name     || !email        ||
-        !password || !phone        ||
-        !birthday || !lastname     ||
-        !profilePhoto
-    ) {
-      setError("Todos los campos son obligatorios");
-      toast.error("Todos los campos son obligatorios");
-      return;
-    }
+    const data = await response.json();
+    toast.success("Registrado");
+    setSuccess("Successful Register");
+    cleanData();
+    return data;
+  } catch (error) {
+    setError(error.message);
+    toast.error("Ocurrió un error al registrarte");
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
 
-    try {
-
-      const newCustomer = { 
-
-        name, email, password, 
-        phone, birthday, lastname, 
-        profilePhoto
-    
-    };
-
-      console.log(newCustomer, "Datos del empleado registrado");
-
-      const response = await fetch(ApiCustomers, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newCustomer),
-      });
-
-      if (!response.ok) {
-        throw new Error("Hubo un error al registrar el empleado");
-      }
-
-      const data = await response.json();
-      toast.success("Registrado");
-      setSuccess("Successful Register");
-      cleanData(); 
-      fetchData();
-    } catch (error) {
-      setError(error.message);
-      console.error("Error al registrarse", error);
-      toast.error("Ocurrió un error al registrarte");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Obtener Empleados
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(ApiEmployees);
-      if (!response.ok) throw new Error("Error al obtener los Empleados");
-      const data = await response.json();
-      setEmployees(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   return {
     id,
@@ -131,9 +82,8 @@ const useDataCustomers = () => {
     setLoading,
     customers,
     setCustomers,
-    cleanData, 
-    handleSubmit,
-    fetchData,
+    cleanData,
+    createCustomer, 
   };
 };
 

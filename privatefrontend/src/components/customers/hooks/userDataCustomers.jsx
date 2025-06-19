@@ -35,10 +35,20 @@ const userDataCustomers = () => {
     setLoading(true);
     try {
       const res = await fetch(ApiCustomers);
+
+      if (!res.ok) {
+        throw new Error('Error al obtener los clientes');
+      }
+
       const data = await res.json();
       setCustomers(data);
+      setError(null);
+
     } catch (error) {
+
       console.error("Error al obtener clientes:", error);
+      setError('Error al cargar los clientes. Verifica que el servidor esté funcionando.');
+
     } finally {
       setLoading(false);
     }

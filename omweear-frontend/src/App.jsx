@@ -14,6 +14,7 @@ import Register from './screens/Register.jsx';
 import VerifyCode from './screens/VerifyCode.jsx';
 import ResetPassword from './screens/ResetPassword.jsx';
 import Recoverpassword from './screens/Recoverpassword.jsx';
+import CodeMailValidation from "./screens/CodeMailValidation.jsx";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/codemail" element={<CodeMailValidation />}></Route>
         <Route path="/recover-password" element={<Recoverpassword />} />
         <Route path="/verify-code" element={<VerifyCode />} />
         <Route path="/reset-password" element={<ResetPassword />} />

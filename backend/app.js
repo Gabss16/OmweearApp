@@ -10,7 +10,6 @@ import sales from "./src/routes/sales.js";
 import shoppingCart from "./src/routes/shoppingCart.js";
 import supliers from "./src/routes/suppliers.js";
 import wishlist from "./src/routes/wishlist.js";
-
 import registerEmployeesRoutes from "./src/routes/RegisterEmployees.js"
 import loginRoutes from "./src/routes/login.js"
 import logoutRoutes from "./src/routes/logout.js"
@@ -21,8 +20,10 @@ import { validateAuthToken } from "./src/middleware/validateAuthToken.js";
 
 import cors from "cors";
 
-//app.use(cookieParser())
 const app = express();
+
+//Postman acepte guardar librerias
+app.use(cookieParser())
 
 
 app.use(
@@ -33,10 +34,6 @@ app.use(
   );
 
 app.use(express.json());
-
-//Que postman acepte guardar cookies
-app.use(cookieParser())
-
 
 //Empieza CRUD
 //1.definir rutas de funciones
