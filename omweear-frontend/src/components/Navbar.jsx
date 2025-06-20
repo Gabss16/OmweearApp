@@ -25,7 +25,6 @@ const Navbar = () => {
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
           <li><Link to="/" className="hover:text-pink-500 transition">HOME</Link></li>
           <li><Link to="/shop" className="hover:text-pink-500 transition">PRODUCTS</Link></li>
-          <li><Link to="/wishlist" className="hover:text-pink-500 transition">FAVORITES</Link></li>
           <li><Link to="/shoppingcart" className="hover:text-pink-500 transition">CART</Link></li>
         </ul>
 

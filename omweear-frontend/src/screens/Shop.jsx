@@ -17,12 +17,12 @@ import arrival6 from '../images/product6.jfif';
 
 const Shop = () => {
     const products = [
-      { id: 1, imageUrl: arrival1, price: 23.00 },
-      { id: 2, imageUrl: arrival3, price: 23.00 },
-      { id: 3, imageUrl: arrival2, price: 23.00 },
-      { id: 4, imageUrl: arrival4, price: 23.00 },
-      { id: 5, imageUrl: arrival5, price: 23.00 },
-      { id: 6, imageUrl: arrival6, price: 23.00 },
+      { id: 1, imageUrl: arrival1, price: 23.00, name :  "Hola Levi"  },
+      { id: 2, imageUrl: arrival3, price: 23.00 , name :  "Hola Levi" },
+      { id: 3, imageUrl: arrival2, price: 23.00 , name :  "Hola Levi" },
+      { id: 4, imageUrl: arrival4, price: 23.00 , name :  "Hola Levi" },
+      { id: 5, imageUrl: arrival5, price: 23.00 , name :  "Hola Levi" },
+      { id: 6, imageUrl: arrival6, price: 23.00 , name :  "Hola Levi" },
       ];
   return (
     <>
@@ -47,8 +47,7 @@ const Shop = () => {
           <ProductCard
           key={product.id}
           id={product.id}
-          imageUrl={product.imageUrl}
-          price={product.price}
+          producto={product}
         />
         ))}
       </div>
