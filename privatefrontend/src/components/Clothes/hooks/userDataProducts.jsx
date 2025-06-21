@@ -21,6 +21,8 @@ const useDataProducts = () => {
   const [loading, setLoading] = useState(false);
   const [errorProduct, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [image, setImage] = useState(null);
+  
 
     //  Función para limpiar los datos del formulario
   const cleanData = () => {
@@ -53,46 +55,41 @@ const useDataProducts = () => {
     }
   };
 //  Función para registrar un nuevo producto
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async () => {
+  // Validación
+  if (!name || !description || !price || !stock || !idCategory || !idBrand || !sizesAvailable || !idSupplier) {
+    toast.error("Todos los campos son obligatorios");
+    return;
+  }
 
-        //  Validación de campos obligatorios
-    if (!name || !description || !price || !stock || !idCategory || !idBrand || !sizesAvailable || !idSupplier) {
-      toast.error("Todos los campos son obligatorios");
-      return;
-    }
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("description", description);
+  formData.append("price", price);
+  formData.append("stock", stock);
+  formData.append("idCategory", idCategory);
+  formData.append("idBrand", idBrand);
+  formData.append("sizesAvailable", sizesAvailable);
+  formData.append("idSupplier", idSupplier);
+  formData.append("imagen", image);
 
-    const newProduct = {
-      name,
-      description,
-      price,
-      stock,
-      idCategory,
-      idBrand,
-      sizesAvailable,
-      idSupplier,
-    };
+  try {
+    const response = await fetch(ApiProducts, {
+      method: "POST",
+      body: formData,
+    });
 
-    try {
-      const response = await fetch(ApiProducts, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-      });
+    if (!response.ok) throw new Error("Error al registrar el producto");
 
-      if (!response.ok) throw new Error("Error al registrar el producto");
-
-      await response.json();
-      toast.success("Producto registrado correctamente");
-      cleanData(); //  Limpia el formulario
-      fetchData(); //  Refresca los datos
-    } catch (error) {
-      console.error(error);
-      toast.error("Ocurrió un error al registrar el producto");
-    }
-  };
+    await response.json();
+    toast.success("Producto registrado correctamente");
+    cleanData(); //  Limpia el formulario
+    fetchData(); //  Refresca los datos
+  } catch (error) {
+    console.error(error);
+    toast.error("Ocurrió un error al registrar el producto");
+  }
+};
 
   // Función para eliminar un producto
   const deleteProduct = async (id) => {
@@ -124,6 +121,7 @@ const useDataProducts = () => {
     setIdBrand(product.idBrand?._id || "");
     setSizesAvailable(product.sizesAvailable);
     setIdSupplier(product.idSupplier?._id || "");
+    setImage(null);
     setError(null);
     setSuccess(null);
   };
@@ -132,72 +130,55 @@ const useDataProducts = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const updatedProduct = {
-      name,
-      description,
-      price,
-      stock,
-      idCategory,
-      idBrand,
-      sizesAvailable,
-      idSupplier,
-    };
-
     try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("stock", stock);
+      formData.append("idCategory", idCategory);
+      formData.append("idBrand", idBrand);
+      formData.append("sizesAvailable", sizesAvailable);
+      formData.append("idSupplier", idSupplier);
+      if (image) formData.append("imagen", image);
+
       const response = await fetch(`${ApiProducts}/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedProduct),
+        body: formData,
       });
 
       if (!response.ok) throw new Error("Error al actualizar el producto");
 
       toast.success("Producto actualizado correctamente");
-      cleanData(); //  Limpia el formulario
-      fetchData(); //  Refresca los productos
+      cleanData();
+      fetchData();
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
       toast.error("Ocurrió un error al actualizar el producto");
     }
   };
 
-    //  Se ejecuta al montar el componente, carga los productos existentes
   useEffect(() => {
     fetchData();
   }, []);
 
-  //  Retorna funciones y estados para usarlos en el componente
   return {
-    id,
-    setId,
-    name,
-    setName,
-    description,
-    setDescription,
-    price,
-    setPrice,
-    stock,
-    setStock,
-    idCategory,
-    setIdCategory,
-    idBrand,
-    setIdBrand,
-    sizesAvailable,
-    setSizesAvailable,
-    idSupplier,
-    setIdSupplier,
-    products,
-    loading,
-    errorProduct,
-    success,
-    handleSubmit,
-    handleUpdate,
-    deleteProduct,
-    updateProduct,
+    id, setId,
+    name, setName,
+    description, setDescription,
+    price, setPrice,
+    stock, setStock,
+    idCategory, setIdCategory,
+    idBrand, setIdBrand,
+    sizesAvailable, setSizesAvailable,
+    idSupplier, setIdSupplier,
+    image, setImage,
+    products, loading, errorProduct, success,
+    handleSubmit, handleUpdate,
+    deleteProduct, updateProduct,
     cleanData,
   };
 };
+
 
 export default useDataProducts;

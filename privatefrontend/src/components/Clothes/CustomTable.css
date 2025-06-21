@@ -48,4 +48,8 @@
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
-  
+  img{
+    width: 8rem; 
+    height: 6rem;
+    object-fit: cover;
+  }
