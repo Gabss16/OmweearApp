@@ -4,6 +4,7 @@ import DropDown from "../Dropdown";
 import { useGetData } from "./hooks/UseGetData";
 
 export default function RegisterProduct({ 
+  id,
   name, setName, description, setDescription, price, setPrice, 
   stock, setStock, idCategory, setIdCategory, idBrand, setIdBrand, 
   sizesAvailable, setSizesAvailable, idSupplier, setIdSupplier, 
@@ -17,10 +18,15 @@ const handleImageChange = (e) => {
 
   const { brands, providers, categories } = useGetData();
 
-const handleFormSubmit = async (e) => {
-  e.preventDefault();
-  await handleSubmit(); // Ya no mandes formData, el hook lo maneja internamente
-};
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (id) {
+      await handleUpdate(e); // actualiza producto existente
+    } else {
+      await handleSubmit();  // registra nuevo producto
+    }
+  };
 
   return (
     <form onSubmit={handleFormSubmit}>
@@ -58,7 +64,7 @@ const handleFormSubmit = async (e) => {
         placeholder="Tallas disponibles (ej. S, M, L)"
         required
       />
-      <button type="submit">Submit</button>
+      <button type="submit">{id ? "Actualizar" : "Registrar"}</button>
     </form>
   );
 }

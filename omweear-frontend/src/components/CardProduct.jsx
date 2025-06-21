@@ -19,7 +19,7 @@ const CardProduct = ({ producto }) => {
 
   return (
     <div className="product-card" onClick={handleProductInfo}>
-      <img src={producto.imageUrl} alt="product" className="product-img" />
+      <img src={producto.imagen} alt="product" className="product-img" />
       <p>{producto.name}</p>
       <p className="product-price">${producto.price.toFixed(2)}</p>
       <button className="add-to-cart-btn" onClick={handleAddToCart}>

@@ -3,27 +3,15 @@ import '../styles/Shop.css';
 import modelImage from '../images/header2.png';
 import SidebarMenu from '../components/SidebarMenu';
 import ProductCard from '../components/CardProduct';
-import arrival1 from '../images/product1.jfif';
-import arrival2 from '../images/product2.jfif';
-import arrival3 from '../images/product3.jfif';
-import arrival4 from '../images/product4.jfif';
-import arrival5 from '../images/product5.jfif';
-import arrival6 from '../images/product6.jfif';
-
+import useDataProducts from '../../../privatefrontend/src/components/Clothes/hooks/userDataProducts';
 
 
 
 
 
 const Shop = () => {
-    const products = [
-      { id: 1, imageUrl: arrival1, price: 23.00, name :  "Hola Levi"  },
-      { id: 2, imageUrl: arrival3, price: 23.00 , name :  "Hola Levi" },
-      { id: 3, imageUrl: arrival2, price: 23.00 , name :  "Hola Levi" },
-      { id: 4, imageUrl: arrival4, price: 23.00 , name :  "Hola Levi" },
-      { id: 5, imageUrl: arrival5, price: 23.00 , name :  "Hola Levi" },
-      { id: 6, imageUrl: arrival6, price: 23.00 , name :  "Hola Levi" },
-      ];
+  const {products} = useDataProducts() 
+
   return (
     <>
       {/* Banner principal */}
@@ -45,8 +33,8 @@ const Shop = () => {
       <div className="products-grid">
         {products.map((product) => (
           <ProductCard
-          key={product.id}
-          id={product.id}
+          key={product._id}
+          id={product._id}
           producto={product}
         />
         ))}
