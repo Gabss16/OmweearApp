@@ -14,7 +14,7 @@ const CardProduct = ({ producto }) => {
   };
 
    const handleProductInfo = () => {
-    navigate(`/shop/${producto.id}`);
+    navigate(`/shop/${producto._id}`);
   };
 
   return (

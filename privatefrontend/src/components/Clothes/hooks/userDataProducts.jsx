@@ -54,6 +54,19 @@ const useDataProducts = () => {
       setLoading(false); //  Finaliza la carga
     }
   };
+
+    const fetchDatabyId = async (id) => {
+  try {
+    const res = await fetch(`${ApiProducts}/${id}`);
+    if (!res.ok) throw new Error("Producto no encontrado");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error al cargar producto:", error);
+    return null;
+  }
+};
+
 //  Función para registrar un nuevo producto
 const handleSubmit = async () => {
   // Validación
@@ -176,7 +189,7 @@ const handleSubmit = async () => {
     products, loading, errorProduct, success,
     handleSubmit, handleUpdate,
     deleteProduct, updateProduct,
-    cleanData,
+    cleanData, fetchDatabyId
   };
 };
 
