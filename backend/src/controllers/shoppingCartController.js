@@ -6,17 +6,23 @@ import shopingCartModel from "../models/ShoppingCart.js"
  
 //SELECT
 shoppingCartController.getCart = async (req, res) => {
-const shoppingCart = await shopingCartModel.find().populate("userId").populate("products")
+const shoppingCart = await shopingCartModel.find().populate("userId").populate("products.idProducts")
 res.json(shoppingCart)
 }
  
 // INSERT
 shoppingCartController.createCart = async (req, res) => {
-    const{userId, products, idProducts, quantity, subtotal, total} = req.body;
-    const newCart = new shopingCartModel ({userId, products, idProducts, quantity, subtotal, total});
-    await newCart.save()
-    res.json({ message : "Shopping cart created "});
-}
+  const { userId, products, total } = req.body;
+
+  try {
+    const newCart = new shopingCartModel({ userId, products, total });
+    await newCart.save();
+    res.json({ message: "Shopping cart created" });
+  } catch (error) {
+    res.status(500).json({ message: "Error creating cart", error });
+  }
+};
+
  
     //DELETE
     shoppingCartController.deleteCart = async (req, res) => {

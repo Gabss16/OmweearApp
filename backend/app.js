@@ -28,10 +28,10 @@ const app = express();
 app.use(cookieParser())
 
 
-app.use( 
-  cors({
-      origin: "http://localhost:5173",
-      credentials: true, 
+app.use(
+    cors({
+      origin: ["http://localhost:5173", "http://localhost:5174"], // Dominio del cliente
+      credentials: true, // Permitir envío de cookies y credenciales
     })
   );
 
@@ -53,7 +53,6 @@ app.use ("/api/sales", sales);
 app.use ("/api/shoppingCart", shoppingCart);
 app.use ("/api/supliers", supliers);
 app.use ("/api/wishlist", wishlist);
-
 app.use("/api/login", loginRoutes);
 app.use("/api/logout", logoutRoutes);
 app.use("/api/registerCustomers", registerCustomerRoutes);

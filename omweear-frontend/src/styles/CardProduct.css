@@ -1,3 +1,7 @@
+.product-card{
+  cursor: pointer;
+}
+
 .add-to-cart-btn {
   margin-top: 8px;
   padding: 10px 16px;

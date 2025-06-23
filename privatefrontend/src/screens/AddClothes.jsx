@@ -1,5 +1,5 @@
 // Importación de dependencias necesarias para el componente
-import React from "react";
+import React, { useState } from "react";
 import CustomTable from "../components/Clothes/CustomTable"; // Componente para mostrar los productos en una tabla personalizada
 import useDataProducts from "../components/Clothes/hooks/userDataProducts"; // Hook personalizado que maneja el estado y funciones CRUD para productos
 import RegisterProduct from "../components/Clothes/RegisterProducts"; // Componente de formulario para registrar o editar productos
@@ -7,7 +7,10 @@ import { Toaster } from "react-hot-toast"; // Componente para mostrar notificaci
 
 // Componente principal que gestiona la vista de "Agregar Ropa"
 export default function AddClothes() {
+ 
+ 
   // Se desestructura el hook para acceder al estado y funciones necesarias
+
   const {
     id,
     setId,
@@ -27,6 +30,8 @@ export default function AddClothes() {
     setSizesAvailable,
     idSupplier,
     setIdSupplier,
+    setImage,
+    image,
     products, // Lista de productos disponibles
     handleSubmit, // Función para registrar un nuevo producto
     handleUpdate, // Función para actualizar un producto existente
@@ -78,6 +83,8 @@ export default function AddClothes() {
             sizesAvailable={sizesAvailable}
             setSizesAvailable={setSizesAvailable}
             idSupplier={idSupplier}
+            image={image}
+            setImage={setImage}
             setIdSupplier={setIdSupplier}
             handleSubmit={handleSubmit} // Se llama al enviar el formulario para crear un producto
             handleUpdate={handleUpdate} // Se llama al actualizar un producto ya existente

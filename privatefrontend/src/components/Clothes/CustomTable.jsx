@@ -53,7 +53,8 @@ const CustomTable = ({
       <td>{element.idCategory?.name}</td>
       <td>{element.idSupplier?.name}</td>
             <td>{element.sizesAvailable}</td>
-         <td>{element.image}</td>
+         <td>
+          <img src={element.imagen} alt={element.name} /></td>
 
 
       {/*  Botones de acción por fila */}
