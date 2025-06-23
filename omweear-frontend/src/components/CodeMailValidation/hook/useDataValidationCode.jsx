@@ -1,65 +1,67 @@
-import React, { useState, useEffect } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useState } from "react";
+import toast from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 
 const useDataValidationCode = () => {
-
   const ApiCode = "http://localhost:4000/api/registerCustomers/verifyCodeEmail";
+  const navigate = useNavigate();
 
-  const [id, setId] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [errorCode, setErrorCode] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [brands, setBrands] = useState([]);
 
   const cleanData = () => {
     setVerificationCode("");
-    setId("");
-    setError(null);
+    setErrorCode(null);
     setSuccess(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ( !verificationCode) {
-      setError("Ingresa el código que te enviamos");
+    if (!verificationCode) {
+      setErrorCode("Ingresa el código que te enviamos");
       toast.error("Ingresa el código que te enviamos");
       return;
     }
 
     try {
+      setLoading(true);
+
       const code = { verificationCode };
-      console.log(code, "datos nuevos de la marca");
 
       const response = await fetch(ApiCode, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify(code),
       });
 
-      if (!response.ok) {
-        throw new Error("Hubo un error al registrar la marca");
+      const data = await response.json();
+
+      if (data.message === "Email verified succesfully") {
+        toast.success("Correo verificado correctamente");
+        setSuccess("Correo verificado");
+        cleanData();
+        setTimeout(() => navigate("/login"), 1000); 
+      } else {
+        toast.error(data.message);
+        setErrorCode(data.message);
       }
 
-      const data = await response.json();
-      toast.success("Marca registrada");
-      setSuccess("Marca registrada correctamente");
-      cleanData();  
     } catch (error) {
-      setError(error.message);
-      console.error("Error al registrar la marca:", error);
-      toast.error("Ocurrió un error al registrar la marca");
+      setErrorCode(error.message);
+      console.error("Error al verificar el código:", error);
+      toast.error("Ocurrió un error al verificar el código");
     } finally {
       setLoading(false);
     }
   };
 
   return {
-    id,
-    setId,
     verificationCode,
     setVerificationCode,
     errorCode,
@@ -68,7 +70,7 @@ const useDataValidationCode = () => {
     setSuccess,
     loading,
     setLoading,
-    cleanData, 
+    cleanData,
     handleSubmit,
   };
 };

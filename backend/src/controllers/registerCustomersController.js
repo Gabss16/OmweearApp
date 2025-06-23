@@ -103,10 +103,10 @@ registerCustomerController.registerCustomer = async (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) 
                 console.log("Error" + error)
-            res.json({message: "Error al enviar el email"})
+                return res.json({message: "Error al enviar el email"})
         })
 
-        res.json({ message: "Customer registered, please verify your email" })
+        return res.json({ message: "Customer registered, please verify your email" })
 
     } catch (error) {
 
@@ -116,8 +116,11 @@ registerCustomerController.registerCustomer = async (req, res) => {
 };
 
 registerCustomerController.verifyCodeEmail = async (req, res) => {
+    
     const { verificationCode } = req.body;
     const token = req.cookies.verificationToken;
+
+    console.log("Cookies recibidas:", req.cookies);
 
     if (!token) {
         return res.json({ message: "Porfavor, registra tu cuenta primero" })

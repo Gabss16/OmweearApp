@@ -29,11 +29,7 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <FaInstagram />
-            <FaTiktok />
-            <FaFacebookF />
-            <FaTwitter />
-            <FaPinterestP />
+            <FaInstagram /> <FaTiktok /> <FaFacebookF /> <FaTwitter /> <FaPinterestP />
           </div>
         </div>
         <div className="footer-section">

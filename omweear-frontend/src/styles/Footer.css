@@ -2,7 +2,7 @@
 .footer {
     background-color: #111;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: "Raleway", sans-serif;
     padding: 40px 20px;
     text-align: center;
   }
@@ -24,6 +24,10 @@
     flex: 1 1 200px;
     min-width: 200px;
   }
+
+.social-icons {
+    display: flex;
+  }
   
   .footer-section h4 {
     margin-bottom: 10px;
@@ -33,10 +37,9 @@
   
   .footer-section ul {
 
-
-  
   /* Responsive */
   @media (max-width: 768px) {
+
     .footer-content {
       flex-direction: column;
       align-items: center;
@@ -104,3 +107,4 @@
     text-decoration: none;
   }
 
+}

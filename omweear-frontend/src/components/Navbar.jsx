@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import "../styles/Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { user, isLoading } = useContext(AuthContext);  
+
+  if (isLoading) {
+    return null; // No renderizar navbar hasta que sepamos si hay sesión
+  }
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-50 top-0">
@@ -27,14 +33,20 @@ const Navbar = () => {
           <li><Link to="/shop" className="hover:text-pink-500 transition">PRODUCTS</Link></li>
           <li><Link to="/wishlist" className="hover:text-pink-500 transition">FAVORITES</Link></li>
           <li><Link to="/shoppingcart" className="hover:text-pink-500 transition">CART</Link></li>
+
+          {user && (
+            <li><Link to="/profile" className="hover:text-pink-500 transition">PROFILE</Link></li>
+          )}
         </ul>
 
         {/* Login */}
-        <div className="hidden md:block">
-          <Link to="/login" className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition">
-            Login
-          </Link>
-        </div>
+        {!user && (
+          <div className="hidden md:block">
+            <Link to="/login" className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

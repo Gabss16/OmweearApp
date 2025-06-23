@@ -17,8 +17,10 @@ import cookieParser from "cookie-parser";
 import registerCustomerRoutes from "./src/routes/RegisterCustomers.js"
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js"
 import { validateAuthToken } from "./src/middleware/validateAuthToken.js";
-
 import cors from "cors";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const app = express();
 
@@ -26,14 +28,15 @@ const app = express();
 app.use(cookieParser())
 
 
-app.use(
-    cors({
-      origin: "http://localhost:5173", // Dominio del cliente
-      credentials: true, // Permitir envío de cookies y credenciales
+app.use( 
+  cors({
+      origin: "http://localhost:5173",
+      credentials: true, 
     })
   );
 
 app.use(express.json());
+app.use(cookieParser());
 
 //Empieza CRUD
 //1.definir rutas de funciones

@@ -131,7 +131,7 @@ const RegisterCustomer = ({
           className="w-full px-4 py-2 border border-gray-300 rounded-md"
         />
         {preview && (
-          <div className="mt-4">
+          <div className="image-profile">
             <img
               src={preview}
               alt="Vista previa"
@@ -143,7 +143,7 @@ const RegisterCustomer = ({
 
   <button
     type="submit"
-    className={`${ "bg-blue-500 hover:bg-blue-600" } text-white px-6 py-2 rounded-md`}>
+    className="register-btn">
     Registrarme
   </button>
 </form>

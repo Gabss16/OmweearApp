@@ -1,6 +1,7 @@
 import CustomersModel from "../models/Customers.js";
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "../config.js";
+import bcryptjs from "bcryptjs"; // <-- AGREGAR ESTA IMPORTACIÓN
 
 cloudinary.config({
     cloud_name: config.cloudinary.cloudinary_name,
@@ -9,7 +10,6 @@ cloudinary.config({
 })
 
 const customersControllers = {};
-
 
 //SELECT
 customersControllers.getCustomers = async (req, res) => {
@@ -34,10 +34,14 @@ customersControllers.createCustomers = async (req, res) => {
             imageURL = result.secure_url;
         }
 
-        const newMovies = new moviesModel({
+        // HASHEAR LA CONTRASEÑA ANTES DE GUARDAR
+        const saltRounds = 10;
+        const hashedPassword = await bcryptjs.hash(password, saltRounds);
+
+        const newMovies = new CustomersModel({
             name,
             email,
-            password,
+            password: hashedPassword, // <-- USAR LA CONTRASEÑA HASHEADA
             phone,
             birthday,
             lastname,
@@ -52,7 +56,8 @@ customersControllers.createCustomers = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 }
-    //DELETE
+
+//DELETE
 customersControllers.deleteCustomers = async (req, res) => {
     try {
         await CustomersModel.findByIdAndDelete(req.params.id)
@@ -62,37 +67,45 @@ customersControllers.deleteCustomers = async (req, res) => {
     }
 }
 
-
 //UPDATE
 customersControllers.updateCustomers = async (req, res) => {
-   //  Solicito todos los valores
-    const {name, email, password, phone, birthday, } = req.body;
+    try {
+        const {name, email, password, phone, birthday, } = req.body;
+        let imageURL = ""
 
-    let imageURL = ""
+        if(req.file){
+            const result = await cloudinary.uploader.upload(
+                req.file.path,
+                {
+                    folder: "public",
+                    allowed_formats: ["png", "jpg", "jpeg"]
+                }
+            );
+            imageURL = result.secure_url
+        }
 
-    if(req.file){
-        const result = await cloudinary.uploader.upload(
-            req.file.path,
-            {
-                folder: "public",
-                allowed_formats: ["png", "jpg", "jpeg"]
-            }
-        );
+        // Preparar los datos para actualizar
+        const updateData = {
+            name,
+            email,
+            phone,
+            birthday,
+            profilePhoto: imageURL
+        };
 
-        imageURL = result.secure_url
+        // SOLO HASHEAR LA CONTRASEÑA SI SE ESTÁ ACTUALIZANDO
+        if (password && password.trim() !== "") {
+            const saltRounds = 10;
+            updateData.password = await bcryptjs.hash(password, saltRounds);
+        }
+
+        await CustomersModel.findByIdAndUpdate(req.params.id, updateData, {new: true});
+        
+        res.json({ message: "Customer updated"});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error updating customer", error });
     }
-
-    await CustomersModel.findByIdAndUpdate(req.params.id,{
-        name,
-        email,
-        password,
-        phone,
-        birthday,
-        profilePhoto
-    },{new: true}
-);
-// Mostramos un mensaje que todo se actualizó
-res.json({ message: "Customer uptated"});
 };
 
 export default customersControllers;

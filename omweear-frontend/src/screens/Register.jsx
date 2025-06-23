@@ -62,7 +62,7 @@ const Register = () => {
         />
 
         <p className="login-link">
-          ¿Ya tienes una cuenta? <Link to="/">Iniciar Sesión</Link>
+          ¿Ya tienes una cuenta? <Link to="/login">Iniciar Sesión</Link>
         </p>
       </div>
 

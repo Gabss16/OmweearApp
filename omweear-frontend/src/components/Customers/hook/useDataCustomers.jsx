@@ -35,8 +35,8 @@ const useDataCustomers = () => {
   try {
     const response = await fetch(ApiCustomers, {
       method: "POST",
-      // NO agregar headers si usas FormData
       body: formData,
+      credentials: "include"
     });
 
     if (!response.ok) throw new Error("Hubo un error al registrar el cliente");
