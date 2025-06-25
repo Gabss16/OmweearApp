@@ -36,7 +36,7 @@ registerCustomerController.registerCustomer = async (req, res) => {
 
         if (existCustomer) {
 
-            return res.json({ message: "This customer already exists" })
+            return res.json({ message: "Ya existe un usuario con este correo electrónico" })
 
         }
 
@@ -132,7 +132,7 @@ registerCustomerController.verifyCodeEmail = async (req, res) => {
         const { email, verificationCode: storedCode } = decoded;
 
         if (verificationCode !== storedCode) {
-            return res.json({ message: "Invalid verification code" })
+            return res.json({ message: "Código inválido" })
         }
 
         const customer = await customersModel.findOne({ email })

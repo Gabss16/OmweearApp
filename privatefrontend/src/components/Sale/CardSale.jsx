@@ -6,11 +6,10 @@ const CardOrder = ({ order, markAsDelivered, showDetails }) => {
     return <div className="text-center text-gray-500">Loading...</div>;
   }
 
-  // Opcional: lógica para colores de estado
   const statusColors = {
-    pendiente: "#facc15", // amarillo
-    entregado: "#4ade80", // verde
-    cancelado: "#f87171", // rojo
+    pendiente: "#facc15",
+    entregado: "#4ade80",
+    cancelado: "#f87171",
   };
 
   const statusColor = statusColors[order.status?.toLowerCase()] || "#a1a1aa";
@@ -31,27 +30,54 @@ const CardOrder = ({ order, markAsDelivered, showDetails }) => {
       <hr />
 
       <div className="order-items-header">
-        <span>Productos</span>
+        <span>Producto</span>
         <span>Cant</span>
         <span>Precio</span>
       </div>
-      {/*
-aqui se cambio el 
-order.items por order.shoppingCart_id?.products que es lo que realmente contiene los productos
-*/}
-      {order.shoppingCart_id?.products?.map((item, index) => (
-        <div className="order-item" key={index}>
-          <span>{item.productDetails?.name || item.idProducts}</span>
-          <span>{item.quantity}</span>
-          <span>{item.subtotal}</span>
+
+      {order.shoppingCart_id?.products?.map((item, index) => {
+  const p = item.productDetails;
+
+  return (
+    <div className="order-item full-details" key={index}>
+      <div className="product-info">
+        {p?.imagen && (
+          <img
+            src={p.imagen}
+            alt={p.name}
+            style={{
+              width: "60px",
+              height: "60px",
+              objectFit: "cover",
+              borderRadius: "8px",
+              marginRight: "10px",
+            }}
+          />
+        )}
+        <div>
+          <strong>{p?.name}</strong>
+          <p className="text-sm text-gray-600">{p?.description}</p>
+          <p className="text-xs text-gray-500">Categoría: {p?.idCategory?.name}</p>
+          <p className="text-xs text-gray-500">Marca: {p?.idBrand?.name}</p>
+          <p className="text-xs text-gray-500">Proveedor: {p?.idSupplier?.name}</p>
+          <p className="text-xs text-gray-500">Talles: {p?.sizesAvailable?.join(", ")}</p>
+          <p className="text-xs text-gray-500">Precio unitario: ${p?.price}</p>
         </div>
-      ))}
+      </div>
+
+      <div className="product-meta">
+        <span>{item.quantity}</span>
+        <span>${(p?.price * item.quantity).toFixed(2)}</span>
+      </div>
+    </div>
+  );
+})}
 
       <hr />
 
       <div className="order-total">
         <strong>Total</strong>
-        <strong>{order.total}</strong>
+        <strong>${order.total}</strong>
       </div>
 
       <div className="order-actions">

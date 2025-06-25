@@ -31,7 +31,8 @@ const employeesShema = new Schema({
     required: true 
     },
    profilePhoto: { 
-    type: String
+    type: String,
+    required: false
     },
    hireDate: {
      type: Date, 

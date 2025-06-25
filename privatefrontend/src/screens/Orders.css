@@ -3,11 +3,14 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3.5rem;
     flex-wrap: wrap;
+    color:black;
   }
   
   .orders-page {
     padding: 20px;
     background-color: #f7f7f7;
+    color:black;
   }
+
 
   

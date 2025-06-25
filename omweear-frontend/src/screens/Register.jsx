@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "./Register.css";
 import useDataCustomers from "../components/Customers/hook/useDataCustomers";
+import RegisterCustomer from "../components/Customers/RegisterCustomers.jsx";
+import "./Register.css";
 import Pilimg from "../images/Pil.png";
 import { Link, useNavigate } from "react-router-dom";
-import RegisterCustomer from "../components/Customers/RegisterCustomers.jsx";
 
 const Register = () => {
+  
   const navigate = useNavigate();
   const { createCustomer } = useDataCustomers();
 

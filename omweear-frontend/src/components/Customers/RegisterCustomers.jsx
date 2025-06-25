@@ -139,7 +139,7 @@ const RegisterCustomer = ({
             />
           </div>
         )}
-      </div>
+  </div>
 
   <button
     type="submit"

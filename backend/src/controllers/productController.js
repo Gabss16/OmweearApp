@@ -1,6 +1,7 @@
 import productsModel from "../models/Products.js";
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "../config.js";
+import mongoose from "mongoose";
 
 // Configuración de Cloudinary
 cloudinary.config({
@@ -36,6 +37,10 @@ productsControllers.getProductById = async (req, res) => {
 
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "ID de producto no válido" });
     }
 
     res.json(product);

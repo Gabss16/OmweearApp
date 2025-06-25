@@ -1,7 +1,7 @@
 import CustomersModel from "../models/Customers.js";
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "../config.js";
-import bcryptjs from "bcryptjs"; // <-- AGREGAR ESTA IMPORTACIÓN
+import bcryptjs from "bcryptjs"; 
 
 cloudinary.config({
     cloud_name: config.cloudinary.cloudinary_name,
@@ -93,7 +93,6 @@ customersControllers.updateCustomers = async (req, res) => {
             profilePhoto: imageURL
         };
 
-        // SOLO HASHEAR LA CONTRASEÑA SI SE ESTÁ ACTUALIZANDO
         if (password && password.trim() !== "") {
             const saltRounds = 10;
             updateData.password = await bcryptjs.hash(password, saltRounds);

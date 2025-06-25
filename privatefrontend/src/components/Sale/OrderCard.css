@@ -6,6 +6,7 @@
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: sans-serif;
+    color: black;
   }
   
   .order-header {
@@ -64,5 +65,7 @@
     background: #f1f1f1;
     font-weight: bold;
     cursor: pointer;
+    color: black;
   }
+  
   

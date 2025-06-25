@@ -16,7 +16,7 @@ const ListOrders = ({ orders, loading, markAsDelivered, showDetails, getProductD
             order={order}
             markAsDelivered={markAsDelivered}
             showDetails={showDetails}
-            getProductDetails={getProductDetails} // si lo necesitas
+            getProductDetails={getProductDetails} 
           />
         ))}
       </div>

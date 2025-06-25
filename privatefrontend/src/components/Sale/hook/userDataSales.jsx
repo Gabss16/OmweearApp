@@ -10,19 +10,21 @@ const useSalesData = () => {
   const [success, setSuccess] = useState(null);
 
   const getProductDetails = async (productId) => {
-    try {
-      const res = await fetch(
-        `http://localhost:4000/api/products/${productId}`
-      );
-      if (!res.ok) throw new Error("No se pudo obtener el producto");
-      return await res.json();
-    } catch (error) {
-      console.error(`Error al obtener el producto ${productId}:`, error);
-      return null; // o un objeto vacío si prefieres
+  try {
+    const res = await fetch(`http://localhost:4000/api/products/${productId}`);
+    if (!res.ok) {
+      console.warn(`Producto con ID ${productId} no encontrado`);
+      return { notFound: true };
     }
-  };
 
-  // 👉 Obtener ventas
+    return await res.json();
+  } catch (error) {
+    console.error(`⚠️ Error al obtener el producto ${productId}:`, error);
+    return null;
+  }
+};
+
+  // Obtener ventas
   const fetchSales = async () => {
     setLoading(true);
     try {
@@ -72,7 +74,7 @@ const useSalesData = () => {
     }
   };
 
-  // 👉 Actualizar toda la venta (por si ocupás después para editar)
+  // Actualizar toda la venta (por si ocupás después para editar)
   const updateSale = async (id, updatedSale) => {
     try {
       const response = await fetch(`${ApiSales}/${id}`, {
@@ -95,7 +97,7 @@ const useSalesData = () => {
     }
   };
 
-  // 👉 Actualizar solo el estado
+  // Actualizar solo el estado
   const updateSaleStatus = async (id, newStatus) => {
     try {
       const response = await fetch(`${ApiSales}/update-status/${id}`, {
