@@ -1,48 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ShoppingCart.css';
+import useUserDataCart from "../components/Cart/useDataCard"; // ajusta la ruta
 
 function ShoppingCart() {
-  const cartItems = [
-    { id: 1, name: 'Active Top', image: 'https://i.pinimg.com/736x/39/00/1b/39001b371f2026aefd22b9b410f46372.jpg', size: 'S', color: 'Black', price: 25.00, quantity: 1 },
-    { id: 2, name: 'Comfy Leggins', image: 'https://i.pinimg.com/736x/6b/07/75/6b07756dc8c951b4ce9882ecc8ffbd04.jpg', size: 'M', color: 'Gray', price: 39.00, quantity: 2 },
-  ];
+  const userId = "685c1f6eb01d24d49e337b3c"; // 🧪 temporal
+  const { cart, fetchCart, removeFromCart } = useUserDataCart(userId);
 
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const estimatedShipping = 5.00;
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
+  const handleRemove = (productId) => {
+    removeFromCart(productId);
+  };
+
+  if (!cart || !cart.products) return <p>Loading cart...</p>;
+
+  const subtotal = cart.total || 0;
+  const estimatedShipping = 5.0;
   const discount = 0;
   const estimatedTotal = subtotal + estimatedShipping - discount;
 
   return (
     <div className="shopping-cart-container">
-      <div className="cart-header"> {/* Banner del carrito */}
+      <div className="cart-header">
         <h1>Shopping Bag</h1>
       </div>
 
-      {cartItems.length === 0 ? (
+      {cart.products.length === 0 ? (
         <p>Your cart is currently empty.</p>
       ) : (
-        <div className="cart-grid"> {/* Contenedor principal de los items y el resumen */}
+        <div className="cart-grid">
           <div className="cart-items">
-            {cartItems.map(item => (
-              <div className="cart-item" key={item.id}>
-                <div className="item-image">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="item-details">
-                  <h3 className="item-name">{item.name}</h3>
-                  <p className="item-info">Size: {item.size}, Color: {item.color}</p>
-                  <p className="item-price">${item.price.toFixed(2)}</p>
-                </div>
-                <div className="item-quantity">
-                  <label htmlFor={`quantity-${item.id}`}>Qty:</label>
-                  <input type="number" id={`quantity-${item.id}`} name={`quantity-${item.id}`} value={item.quantity} min="1" />
-                </div>
-                <div className="item-subtotal">
-                  ${(item.price * item.quantity).toFixed(2)}
-                </div>
-                <button className="remove-item">Remove</button>
-              </div>
-            ))}
+            {cart.products.map((item, index) => (
+  <div className="cart-item" key={index}>
+    <div className="item-image">
+      <img
+  src={item.productId?.imagen || "/placeholder.jpg"}
+  alt={item.productId?.name || "Producto"}
+  style={{ width: "100px", height: "100px", objectFit: "cover" }}
+/>
+
+    </div>
+    <div className="item-details">
+      <h3 className="item-name">{item.productId.name}</h3>
+      <p className="item-info">Qty: {item.quantity}</p>
+      <p className="item-price">${item.productId.price.toFixed(2)}</p>
+    </div>
+    <div className="item-subtotal">
+      ${(item.subtotal).toFixed(2)}
+    </div>
+    <button className="remove-item" onClick={() => handleRemove(item.productId._id)}>
+      Remove
+    </button>
+  </div>
+))}
           </div>
 
           <div className="cart-summary">
@@ -55,12 +67,6 @@ function ShoppingCart() {
               <span>Estimated Shipping</span>
               <span>${estimatedShipping.toFixed(2)}</span>
             </div>
-            {discount > 0 && (
-              <div className="summary-line discount">
-                <span>Discount</span>
-                <span>-${discount.toFixed(2)}</span>
-              </div>
-            )}
             <div className="summary-line total">
               <span>Estimated Total</span>
               <span>${estimatedTotal.toFixed(2)}</span>
@@ -69,13 +75,6 @@ function ShoppingCart() {
           </div>
         </div>
       )}
-
-      <div className="recommended-accessories">
-        <h2>RECOMMENDED ACCESSORIES</h2>
-        <div className="accessories-grid">
-          {/* ... accesorios recomendados ... */}
-        </div>
-      </div>
     </div>
   );
 }

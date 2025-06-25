@@ -6,7 +6,7 @@ const shoppingCartSchema = new Schema({
          type: Schema.Types.ObjectId, 
          required: true, ref: "Customers" },
     products: [{
-        idProducts: { 
+        productId: { 
             type: Schema.Types.ObjectId, 
             required: true, 
             ref: "Products" },

@@ -1,18 +1,12 @@
-import express, { Router } from "express";
-import shoppingCartController from "../controllers/shoppingCartController.js"
-//Router que nos ayuda a color métodos
-// que tendrá mi ruta
- 
- 
-//Router nos ayuda a color los métodos que tendrá mi ruta
+// routes/cart.js
+import express from "express";
+import shoppingCartController from "../controllers/shoppingCartController.js";
 const router = express.Router();
- 
- 
-router.route("/")
-.get(shoppingCartController.getCart)
-.post(shoppingCartController.createCart)
-router.route("/:id")
-.put(shoppingCartController.updateCart)
-.delete(shoppingCartController.deleteCart);
- 
+
+router.get("/:userId", shoppingCartController.getCart);
+router.post("/add", shoppingCartController.addToCart);
+router.delete("/remove", shoppingCartController.removeFromCart);
+router.delete("/delete/:id", shoppingCartController.deleteCart);
+
+
 export default router;
