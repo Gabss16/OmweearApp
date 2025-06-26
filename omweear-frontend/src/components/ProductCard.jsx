@@ -6,8 +6,8 @@ import '../styles/ProductCard.css';
 const ProductCard = ({ image, title, description }) => {
   const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    navigate('/shoppingcart');
+  const CategoryButton = () => {
+    navigate('/shop');
   };
 
   return (
@@ -15,8 +15,8 @@ const ProductCard = ({ image, title, description }) => {
       <img src={image} alt={title} className="product-image" />
       <h3 className="product-title">{title}</h3>
       <p className="product-description">{description}</p>
-      <button className="add-to-cart-btn" onClick={handleAddToCart}>
-        Add to Cart
+      <button className="add-to-cart-btn" onClick={CategoryButton}>
+        More
       </button>
     </div>
   );

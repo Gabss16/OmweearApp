@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../styles/Home.css';
 import modelImage from '../images/hd.png'; 
@@ -7,37 +7,29 @@ import img1 from '../images/img1.jpg';
 import img2 from '../images/img2.jpg'; 
 import img3 from '../images/img3.jpg'; 
 import img4 from '../images/img4.jpg'; 
-import arrival1 from '../images/arrival1.jfif'; 
-import arrival2 from '../images/arrival2.jfif'; 
-import arrival3 from '../images/arrival3.jfif'; 
-import arrival4 from '../images/arrival4.jfif'; 
 import promoPhones from '../images/phones.png'; 
 import CategoryButton from '../components/CategoryButton';
 import ProductCard from '../components/ProductCard';
 
 const Header = () => {
-  const newArrivals = [
-    {
-      image: arrival1,
-      price: 23.0,
-      colors: ['#1c1c2c', '#ffffff']
-    },
-    {
-      image: arrival2,
-      price: 23.0,
-      colors: ['#000000', '#ffffff', '#8a8a8a']
-    },
-    {
-      image: arrival3,
-      price: 23.0,
-      colors: ['#bfa88c']
-    },
-    {
-      image: arrival4,
-      price: 23.0,
-      colors: ['#1c1c2c', '#ffffff']
-    },
-  ];
+  const [newArrivals, setNewArrivals] = useState([]);
+
+  useEffect(() => {
+    const fetchNewArrivals = async () => {
+    try{
+      const response = await fetch ("http://localhost:4000/api/products");
+      const data = await response.json();
+      
+      //para tomar solo 5 productos
+      const limited = data.reverse().slice(0,5); //Esto trae los productos mas recientes
+      setNewArrivals(limited);
+    }catch (error) {
+      console.error("Error al traer los productos", error);
+    }
+  };
+
+  fetchNewArrivals();
+  }, []);
 
   return (
     <>
@@ -52,18 +44,19 @@ const Header = () => {
       </div>
 
       <div className="home-container">
-        {/* Sección DISCOVER */}
-        <section className="discover-section">
-          <h2>Discover Shop Items</h2>
-          <p>Diseños funcionales con materiales sostenibles para tus prácticas diarias</p>
-          
+          {/* Sección DISCOVER */}
+  <section className="discover-section">
+    <h2 className="trending-title"> TRENDING NOW</h2>
+    <span className="trending-subtitle">
+      Diseños funcionales con materiales sostenibles para tus prácticas diarias
+    </span>
           <div className="categories responsive-categories">
             <CategoryButton label="Tops" />
             <CategoryButton label="Leggins" />
-            <CategoryButton label="Bodies" />
-            <CategoryButton label="Hodies" />
-            <CategoryButton label="Esterillas" />
-            <CategoryButton label="Weight" />
+            <CategoryButton label="Accesorios" />
+            <CategoryButton label="Bags" />
+            <CategoryButton label="Yoga Mats" />
+            <CategoryButton label="Water Bottles" />
           </div>
 
           <div className="products responsive-products">
@@ -84,30 +77,32 @@ const Header = () => {
             />
             <ProductCard 
               image={img4} 
-              title="SOCKS"
+              title="SETS"
               description="Diseños funcionales con materiales sostenibles"
             />
           </div>
         </section>
 
         {/* Sección NEW ARRIVALS */}
-        <section className="new-arrivals-section">
-          <h2 className="section-title">NEW ARRIVALS</h2>
-          <div className="new-arrivals-grid responsive-arrivals">
-            {newArrivals.map((item, index) => (
-              <div key={index} className="new-arrival-card">
-                <img src={item.image} alt="arrival item" className="new-arrival-img" />
-                <div className="arrival-colors">
-                  {item.colors.map((color, idx) => (
-                    <span key={idx} className="color-dot" style={{ backgroundColor: color }}></span>
-                  ))}
-                </div>
-                <h2 className="arrival-price">${item.price.toFixed(2)}</h2>
-               
-              </div>
-            ))}
-          </div>
-        </section>
+       {/* Sección NEW ARRIVALS */}
+<section className="new-arrivals-section">
+  <h2 className="section-title">NEW ARRIVALS</h2>
+  <div className="new-arrivals-grid responsive-arrivals">
+    {newArrivals.map((item, index) => (
+      <div key={index} className="new-arrival-card">
+        <img src={item.imagen} alt={item.name} className="new-arrival-img" />
+        <div className="arrival-colors">
+          {(item.colors || []).map((color, idx) => (
+            <span key={idx} className="color-dot" style={{ backgroundColor: color }}></span>
+          ))}
+        </div>
+        <p  className="arrival description"> {item.name} </p>
+        <h3 className="arrival-price">${item.price.toFixed(2)}</h3>
+      </div>
+    ))}
+  </div>
+</section>
+
 
         {/* Sección PROMO */}
         <section className="promo-section responsive-promo">

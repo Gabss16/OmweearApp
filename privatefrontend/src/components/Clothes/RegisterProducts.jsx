@@ -37,7 +37,7 @@ const handleImageChange = (e) => {
       <input type="file" onChange={handleImageChange} accept="image/*" />
             <DropDown
         id="idBrand"
-        label="Proveedor"
+        label="Marca"
         options={brands}
         value={idBrand}
         onChange={(e) => setIdBrand(e.target.value)}
@@ -51,19 +51,26 @@ const handleImageChange = (e) => {
       />
             <DropDown
         id="idCategory"
-        label="Proveedor"
+        label="Categoria"
         options={categories}
         value={idCategory}
-        onChange={(e) => setIdCategory(e.target.value)}
+        onChange={(e) => setIdCategory(e.target.value)} 
       />
 
-            <input
-        type="text"
-        value={sizesAvailable}
-        onChange={(e) => setSizesAvailable(e.target.value)}
-        placeholder="Tallas disponibles (ej. S, M, L)"
-        required
-      />
+        <input
+  type="text"
+  value={Array.isArray(sizesAvailable) ? sizesAvailable.join(", ") : ""}
+  onChange={(e) => {
+    const input = e.target.value;
+    const sizesArray = input
+      .split(",")
+      .map(size => size.trim())
+      .filter(size => size !== "");
+    setSizesAvailable(sizesArray);
+  }}
+  placeholder="Tallas disponibles (ej. S, M, L)"
+/>
+
       <button type="submit">{id ? "Actualizar" : "Registrar"}</button>
     </form>
   );
