@@ -10,7 +10,7 @@ const router = express.Router();
  
 router.route("/")
 .get(salesController.getSales)
-.post(salesController.createSale)
+router.post("/add", salesController.createSale);
 
 router.put("/update-status/:id", salesController.updateStatus);
 
