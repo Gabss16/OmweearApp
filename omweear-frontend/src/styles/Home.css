@@ -86,7 +86,7 @@
   padding: 4rem 2rem;
   box-sizing: border-box;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .section-title {
@@ -99,16 +99,38 @@
 
 .new-arrivals-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;;
   justify-content: center;
   gap: 2rem;
+  background-color: #ffffff;
 }
+
+.new-arrivals-section {
+  background-color: #ffffff; /* fondo negro */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+}
+
+.section-title {
+  color: #ffffff; /* texto blanco */
+  font-size: 2rem;
+  background-color: #cf1d58;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  font-family: Arial, sans-serif;
+
+
+}
+
 
 .new-arrival-card {
   width: 180px;
   text-align: center;
   background: transparent;
   border: none;
+  padding: 0.5rem;
+
 }
 
 .new-arrival-img {
@@ -132,10 +154,12 @@
 }
 
 .arrival-price {
-  font-size: 14px;
-  font-weight: normal;
-  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000; 
+  margin-top: 0.5rem;
 }
+
 
 .arrival-add-btn {
   font-size: 13px;
@@ -234,3 +258,41 @@
     margin-top: 20px;
   }
 }
+.trending-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.trending-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #ff008c;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.trending-subtitle {
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+

@@ -15,7 +15,7 @@ const useDataProducts = () => {
   const [stock, setStock] = useState("");
   const [idCategory, setIdCategory] = useState("");
   const [idBrand, setIdBrand] = useState("");
-  const [sizesAvailable, setSizesAvailable] = useState("");
+  const [sizesAvailable, setSizesAvailable] = useState(null);
   const [idSupplier, setIdSupplier] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ const useDataProducts = () => {
     setStock("");
     setIdCategory("");
     setIdBrand("");
-    setSizesAvailable("");
+    setSizesAvailable(null);
     setIdSupplier("");
     setError(null);
     setSuccess(null);

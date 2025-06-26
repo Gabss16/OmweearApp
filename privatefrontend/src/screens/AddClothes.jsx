@@ -61,7 +61,7 @@ export default function AddClothes() {
 
       <main className="add-clothes-main"> {/* Contenido principal */}
         <h1 className="add-clothes-title">
-          <span>Add Clothes</span> {/* Título de la página */}
+          <span>Add Product</span> {/* Título de la página */}
         </h1>
 
         {/* Sección del formulario de registro de productos */}

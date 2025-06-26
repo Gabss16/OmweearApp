@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const productsSchema = new Schema({
   name: {
     type: String,
-    required: true, // corregido de `require` a `required`
+    required: true, 
   },
   description: {
     type: String,
@@ -32,7 +32,8 @@ const productsSchema = new Schema({
   },
   sizesAvailable: {
     type: [String], // Ahora es un arreglo de strings
-    required: true,
+    required: false,
+    default:[],
   },
   idSupplier: {
     type: Schema.Types.ObjectId,

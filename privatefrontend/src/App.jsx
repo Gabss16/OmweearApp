@@ -9,7 +9,7 @@ import ResetPassword from './screens/ResetPassword.jsx';
 
 import AddClothes from './screens/AddClothes.jsx';
 import AddCategory from './screens/AddCategory.jsx';
-import AddAccessory from './screens/AddAccessory.jsx';
+/*import AddAccessory from './screens/AddAccessory.jsx';*/
 import AddEmployee from './screens/AddEmployee.jsx';
 import Profile from './screens/Profile.jsx';
 import AddSuppliers from './screens/AddSuppliers.jsx';
@@ -43,7 +43,7 @@ function App() {
                 <Route path="/add-brand" element={<AddBrands />} />
                 <Route path="/add-category" element={<AddCategory />} />
                 <Route path="/clothes" element={<AddClothes />} />
-                <Route path="/accessories" element={<AddAccessory />} />
+                <Route path="/accessories" element={<AddClothes />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/suppliers" element={<AddSuppliers />} />
